@@ -1,15 +1,16 @@
-// import 'bootstrap';
-// import 'bootstrap/css/bootstrap.css!';
-
 export class App {
-  // configureRouter(config, router){
-  //   config.title = 'Aurelia';
-  //   config.map([
-  //     { route: ['','welcome'],  moduleId: './welcome',      nav: true, title:'Welcome' },
-  //     { route: 'flickr',        moduleId: './flickr',       nav: true },
-  //     { route: 'child-router',  moduleId: './child-router', nav: true, title:'Child Router' }
-  //   ]);
-  //
-  //   this.router = router;
-  // }
+  configureRouter(config, router) {
+    config.title = 'Northwind';
+    config.map([
+      { route: ['', 'orders'], moduleId: './orders',    nav: true, title: 'Orders' },
+      { route: 'customers',    moduleId: './customers', nav: true, title: 'Customers' },
+      { route: 'employees',    moduleId: './employees', nav: true, title: 'Employees' },
+    ]);
+    this.router = router;
+  }
+
+  attached() {
+    // http://materializecss.com/navbar.html
+    $('.button-collapse').sideNav();
+  }
 }
