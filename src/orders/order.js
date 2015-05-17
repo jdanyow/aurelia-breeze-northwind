@@ -6,6 +6,7 @@ export class Order {
   service;
   entityManager;
   order;
+  details;
   isBusy = false;
 
   constructor(service) {
@@ -24,6 +25,7 @@ export class Order {
     return promise.then(result => {
       this.entityManager = result.entityManager;
       this.order = result.order;
+      this.details = result.details;
     });
   }
 
@@ -49,5 +51,17 @@ export class Order {
           // todo: update location.
         }
       });
+  }
+
+  openDetail(detail) {
+
+  }
+
+  calculateCost(detail) {
+    return detail.Quantity * detail.UnitPrice * (1 - detail.Discount);
+  }
+
+  get total() {
+    return this.details.map(this.calculateCost).reduce((a, b) => a + b, 0);
   }
 }

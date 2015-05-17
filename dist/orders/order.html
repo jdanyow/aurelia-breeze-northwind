@@ -9,40 +9,67 @@
         </div>
         <div class="input-field col s3">
           <input id="OrderDate" type="text" class="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
-          <label for="OrderDate" class.one-time="order.OrderDate === null ? '' : 'active'">Order Date</label>
+          <label for="OrderDate" class.one-time="order.OrderDate ? 'active' : ''">Order Date</label>
         </div>
         <div class="input-field col s3">
           <input id="ShippedDate" type="text" class="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
-          <label for="ShippedDate" class.one-time="order.ShippedDate ? '' : 'active'">Shipped Date</label>
+          <label for="ShippedDate" class.one-time="order.ShippedDate ? 'active' : ''">Shipped Date</label>
         </div>
       </div>
+
       <h4>Shipping</h4>
       <div class="row">
         <div class="input-field col s6">
           <input id="ShipName" type="text" value.bind="order.ShipName">
-          <label for="ShipName" class.one-time="order.ShipName.length === 0 ? '' : 'active'">Name</label>
+          <label for="ShipName" class.one-time="order.ShipName ? 'active' : ''">Name</label>
         </div>
         <div class="input-field col s6">
           <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
-          <label for="ShipAddress" class.one-time="order.ShipAddress.length === 0 ? '' : 'active'">Address</label>
+          <label for="ShipAddress" class.one-time="order.ShipAddress ? 'active' : ''">Address</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s4">
           <input id="ShipCity" type="text" value.bind="order.ShipCity">
-          <label for="ShipCity" class.one-time="order.ShipCity.length === 0 ? '' : 'active'">City</label>
+          <label for="ShipCity" class.one-time="order.ShipCity ? 'active' : ''">City</label>
         </div>
         <div class="input-field col s4">
           <input id="ShipRegion" type="text" value.bind="order.ShipRegion">
-          <label for="ShipRegion" class.one-time="order.ShipRegion.length === 0 ? '' : 'active'">State</label>
+          <label for="ShipRegion" class.one-time="order.ShipRegion ? 'active' : ''">State</label>
         </div>
         <div class="input-field col s4">
           <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode" maxlength="5">
-          <label for="ShipPostalCode" class.one-time="order.ShipPostalCode.length === 0 ? '' : 'active'">Zip</label>
+          <label for="ShipPostalCode" class.one-time="order.ShipPostalCode ? 'active' : ''">Zip</label>
         </div>
       </div>
-      <h4>Items</h4>
 
+      <h4>Items</h4>
+      <table class="bordered hoverable table-responsive">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="detail of details" click.delegate="$parent.openDetail(detail)">
+            <td>${detail.Product_ProductName}</td>
+            <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
+            <td>${detail.Quantity | numberFormat:'0,0'}</td>
+            <td>${detail.Discount | numberFormat:'0.00%'}</td>
+            <td>${$parent.calculateCost(detail) | numberFormat:'$0,0.00'}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4"></td>
+            <td><strong>${total | numberFormat:'$0,0.00'}</strong></td>
+          </tr>
+        <tfoot>
+      </table>
     </form>
   </div>
 </template>

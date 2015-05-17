@@ -25,14 +25,20 @@ export class OrderService {
   getOrder(id) {
     var query = new breeze.EntityQuery()
       .from('Orders')
-      .where('OrderID', '==', id);
+      .where('OrderID', '==', id),
+      orderPromise, detailPromise;
 
-    return createEntityManager()
-      .then(em => em.executeQuery(query))
-      .then(queryResult => {
+    orderPromise = createEntityManager().then(em => em.executeQuery(query));
+    detailPromise = this.getOrderDetails(id);
+
+    return Promise.all([orderPromise, detailPromise])
+      .then(values => {
+        var queryResult = values[0],
+            details = values[1];
         return {
           order: queryResult.results[0],
-          entityManager: queryResult.entityManager
+          entityManager: queryResult.entityManager,
+          details: details
         };
       });
   }
@@ -42,8 +48,21 @@ export class OrderService {
       .then(em => {
         return {
           order: em.createEntity('Order'),
-          entityManager: em
+          entityManager: em,
+          details: []
         };
       });
+  }
+
+  getOrderDetails(id) {
+    var query = new breeze.EntityQuery
+      .from('OrderDetails')
+      .where('OrderID', '==', id)
+      .select('OrderID, UnitPrice, Quantity, Discount, Product.ProductName')
+      .orderByDesc('Quantity');
+
+    return createEntityManager()
+      .then(em => em.executeQuery(query))
+      .then(queryResult => queryResult.results);
   }
 }
