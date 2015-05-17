@@ -19,6 +19,7 @@ export class Orders {
   }
 
   loadPage() {
+    this.orders = [];
     this.isLoading = true;
 
     var query = new breeze.EntityQuery.from('Orders')
