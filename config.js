@@ -28,6 +28,8 @@ System.config({
     "core-js": "npm:core-js@0.9.10",
     "css": "github:systemjs/plugin-css@0.1.10",
     "materialize": "github:dogfalo/materialize@0.96.1",
+    "moment": "github:moment/moment@2.10.3",
+    "numeral": "npm:numeral@1.5.3",
     "github:aurelia/binding@0.6.1": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.7.1",
       "aurelia-metadata": "github:aurelia/metadata@0.5.0",
@@ -226,6 +228,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:numeral@1.5.3": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"

@@ -1,0 +1,1 @@
+module.exports = require("npm:numeral@1.5.3/numeral");
