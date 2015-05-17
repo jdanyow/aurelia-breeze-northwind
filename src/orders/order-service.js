@@ -23,22 +23,16 @@ export class OrderService {
   }
 
   getOrder(id) {
-    var query = new breeze.EntityQuery()
-      .from('Orders')
-      .where('OrderID', '==', id),
-      orderPromise, detailPromise;
+    var orderQuery = new breeze.EntityQuery().from('Orders').where('OrderID', '==', id),
+        detailQuery = new breeze.EntityQuery().from('OrderDetails').where('OrderID', '==', id);
 
-    orderPromise = createEntityManager().then(em => em.executeQuery(query));
-    detailPromise = this.getOrderDetails(id);
-
-    return Promise.all([orderPromise, detailPromise])
+    return createEntityManager()
+      .then(em => Promise.all([em.executeQuery(orderQuery), em.executeQuery(detailQuery)]))
       .then(values => {
-        var queryResult = values[0],
-            details = values[1];
+        var queryResult = values[0];
         return {
           order: queryResult.results[0],
-          entityManager: queryResult.entityManager,
-          details: details
+          entityManager: queryResult.entityManager
         };
       });
   }
@@ -48,21 +42,34 @@ export class OrderService {
       .then(em => {
         return {
           order: em.createEntity('Order'),
-          entityManager: em,
-          details: []
+          entityManager: em
         };
       });
   }
 
-  getOrderDetails(id) {
+  getCustomerLookup() {
     var query = new breeze.EntityQuery
-      .from('OrderDetails')
-      .where('OrderID', '==', id)
-      .select('OrderID, UnitPrice, Quantity, Discount, Product.ProductName')
-      .orderByDesc('Quantity');
+      .from('Customers')
+      .select('CustomerID, CompanyName')
+      .orderBy('CompanyName');
 
     return createEntityManager()
       .then(em => em.executeQuery(query))
       .then(queryResult => queryResult.results);
+  }
+
+  getProductsIndex() {
+    var query = new breeze.EntityQuery
+      .from('Products')
+      .select('ProductID, ProductName')
+      .orderBy('ProductName');
+
+    return createEntityManager()
+      .then(em => em.executeQuery(query))
+      .then(queryResult => {
+        var index = {};
+        queryResult.results.forEach(p => index[p.ProductID] = p.ProductName);
+        return index;
+      });
   }
 }

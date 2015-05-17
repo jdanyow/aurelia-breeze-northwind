@@ -4,7 +4,7 @@ import {OrderService} from './order-service';
 import settings from '../settings';
 
 @inject(AppRouter, OrderService)
-export class Orders {
+export class OrdersList {
   router;
   service;
   orders = [];

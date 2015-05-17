@@ -6,7 +6,7 @@ export class Order {
   service;
   entityManager;
   order;
-  details;
+  customers;
   isBusy = false;
 
   constructor(service) {
@@ -14,28 +14,41 @@ export class Order {
   }
 
   activate(info) {
-    var promise;
+    var orderPromise, customersPromise, productsPromise;
 
+    // load or create the order entity.
     if (info.id === 'new') {
-      promise = this.service.createOrder();
+      orderPromise = this.service.createOrder();
     } else {
-      promise = this.service.getOrder(info.id);
+      orderPromise = this.service.getOrder(info.id);
     }
 
-    return promise.then(result => {
+    orderPromise = orderPromise.then(result => {
       this.entityManager = result.entityManager;
       this.order = result.order;
-      this.details = result.details;
     });
+
+    // load the customers lookup - used to populate the customer drop-down
+    customersPromise = this.service.getCustomerLookup()
+      .then(customers => this.customers = customers);
+
+    // load the products lookup - used to populate display the order details
+    productsPromise = this.service.getProductsIndex()
+      .then(products => this.products = products);
+
+    return Promise.all([orderPromise, customersPromise, productsPromise]);
   }
 
   attached() {
-    $('select').material_select();
-    $('.datepicker').pickadate({
-      format: 'm/d/yyyy',
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
+    // configure the materialize controls
+    setTimeout(() => {
+      $('select').material_select();
+      $('.datepicker').pickadate({
+        format: 'm/d/yyyy',
+        selectMonths: true,
+        selectYears: 15
+      });
+    }, 50);
   }
 
   get isDirty() {
@@ -62,6 +75,6 @@ export class Order {
   }
 
   get total() {
-    return this.details.map(this.calculateCost).reduce((a, b) => a + b, 0);
+    return this.order.OrderDetails.map(this.calculateCost).reduce((a, b) => a + b, 0);
   }
 }

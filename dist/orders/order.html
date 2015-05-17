@@ -3,15 +3,18 @@
     <form>
       <h4>Order</h4>
       <div class="row">
-        <div class="input-field col s6">
-          <input id="Customer" type="text">
+        <div class="input-field col s8">
+          <select value.bind="order.CustomerID">
+            <option value="">Select a customer</option>
+            <option repeat.for="customer of customers" value.bind="customer.CustomerID">${customer.CompanyName}</option>
+          </select>
           <label for="Customer">Customer</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s2">
           <input id="OrderDate" type="text" class="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
           <label for="OrderDate" class.one-time="order.OrderDate ? 'active' : ''">Order Date</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s2">
           <input id="ShippedDate" type="text" class="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
           <label for="ShippedDate" class.one-time="order.ShippedDate ? 'active' : ''">Shipped Date</label>
         </div>
@@ -19,25 +22,29 @@
 
       <h4>Shipping</h4>
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <input id="ShipName" type="text" value.bind="order.ShipName">
           <label for="ShipName" class.one-time="order.ShipName ? 'active' : ''">Name</label>
         </div>
-        <div class="input-field col s6">
-          <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
-          <label for="ShipAddress" class.one-time="order.ShipAddress ? 'active' : ''">Address</label>
+        <div class="input-field col s4">
+          <input id="Freight" type="text" value.bind="order.Freight">
+          <label for="Freight" class.one-time="order.Freight ? 'active' : ''">Freight</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s4">
+          <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
+          <label for="ShipAddress" class.one-time="order.ShipAddress ? 'active' : ''">Address</label>
+        </div>
+        <div class="input-field col s4">
           <input id="ShipCity" type="text" value.bind="order.ShipCity">
           <label for="ShipCity" class.one-time="order.ShipCity ? 'active' : ''">City</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col s2">
           <input id="ShipRegion" type="text" value.bind="order.ShipRegion">
           <label for="ShipRegion" class.one-time="order.ShipRegion ? 'active' : ''">State</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col s2">
           <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode" maxlength="5">
           <label for="ShipPostalCode" class.one-time="order.ShipPostalCode ? 'active' : ''">Zip</label>
         </div>
@@ -55,11 +62,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr repeat.for="detail of details" click.delegate="$parent.openDetail(detail)">
-            <td>${detail.Product_ProductName}</td>
+          <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.openDetail(detail)">
+            <td>${$parent.products[detail.ProductID]}</td>
             <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
             <td>${detail.Quantity | numberFormat:'0,0'}</td>
-            <td>${detail.Discount | numberFormat:'0.00%'}</td>
+            <td>${detail.Discount | numberFormat:'0%'}</td>
             <td>${$parent.calculateCost(detail) | numberFormat:'$0,0.00'}</td>
           </tr>
         </tbody>
