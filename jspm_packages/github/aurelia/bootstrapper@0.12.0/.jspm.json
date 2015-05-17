@@ -1,0 +1,96 @@
+{
+  "name": "aurelia-bootstrapper",
+  "version": "0.12.0",
+  "description": "Sets up the default configuration for the aurelia framework and gets you up and running quick and easy.",
+  "keywords": [
+    "aurelia",
+    "bootstrapper",
+    "spa"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/bootstrapper/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/bootstrapper"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.4.0",
+      "aurelia-framework": "github:aurelia/framework@^0.11.0",
+      "aurelia-history": "github:aurelia/history@^0.4.0",
+      "aurelia-history-browser": "github:aurelia/history-browser@^0.4.0",
+      "aurelia-loader-default": "github:aurelia/loader-default@^0.7.0",
+      "aurelia-logging-console": "github:aurelia/logging-console@^0.4.0",
+      "aurelia-router": "github:aurelia/router@^0.8.0",
+      "aurelia-templating": "github:aurelia/templating@^0.11.0",
+      "aurelia-templating-binding": "github:aurelia/templating-binding@^0.11.0",
+      "aurelia-templating-resources": "github:aurelia/templating-resources@^0.11.0",
+      "aurelia-templating-router": "github:aurelia/templating-router@^0.12.0",
+      "core-js": "npm:core-js@^0.9.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.5"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.5"
+  },
+  "aurelia": {
+    "usedBy": [],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.4.0",
+    "aurelia-framework": "github:aurelia/framework@^0.11.0",
+    "aurelia-history": "github:aurelia/history@^0.4.0",
+    "aurelia-history-browser": "github:aurelia/history-browser@^0.4.0",
+    "aurelia-loader-default": "github:aurelia/loader-default@^0.7.0",
+    "aurelia-logging-console": "github:aurelia/logging-console@^0.4.0",
+    "aurelia-router": "github:aurelia/router@^0.8.0",
+    "aurelia-templating": "github:aurelia/templating@^0.11.0",
+    "aurelia-templating-binding": "github:aurelia/templating-binding@^0.11.0",
+    "aurelia-templating-resources": "github:aurelia/templating-resources@^0.11.0",
+    "aurelia-templating-router": "github:aurelia/templating-router@^0.12.0",
+    "core-js": "npm:core-js@^0.9.5"
+  }
+}

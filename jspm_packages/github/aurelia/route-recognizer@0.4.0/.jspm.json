@@ -1,0 +1,75 @@
+{
+  "name": "aurelia-route-recognizer",
+  "version": "0.4.0",
+  "description": "A lightweight JavaScript library that matches paths against registered routes. It includes support for dynamic and star segments and nested handlers.",
+  "keywords": [
+    "aurelia",
+    "route"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/route-recognizer/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/route-recognizer"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "core-js": "npm:core-js@^0.9.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.5"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.5"
+  },
+  "aurelia": {
+    "usedBy": [
+      "aurelia-router"
+    ],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "core-js": "npm:core-js@^0.9.5"
+  }
+}

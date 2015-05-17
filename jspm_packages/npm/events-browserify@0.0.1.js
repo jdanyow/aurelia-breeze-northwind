@@ -1,0 +1,1 @@
+module.exports = require("npm:events-browserify@0.0.1/events");

@@ -1,0 +1,86 @@
+{
+  "name": "aurelia-dependency-injection",
+  "version": "0.7.1",
+  "description": "A lightweight, extensible dependency injection container for JavaScript.",
+  "keywords": [
+    "aurelia",
+    "di",
+    "dependency injection",
+    "ioc"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/dependency-injection/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/dependency-injection"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "aurelia-logging": "github:aurelia/logging@^0.4.0",
+      "aurelia-metadata": "github:aurelia/metadata@^0.5.0",
+      "core-js": "npm:core-js@^0.9.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.5"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.5"
+  },
+  "aurelia": {
+    "usedBy": [
+      "aurelia-binding",
+      "aurelia-framework",
+      "aurelia-router",
+      "aurelia-templating",
+      "aurelia-templating-resources",
+      "aurelia-templating-router"
+    ],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "aurelia-logging": "github:aurelia/logging@^0.4.0",
+    "aurelia-metadata": "github:aurelia/metadata@^0.5.0",
+    "core-js": "npm:core-js@^0.9.5"
+  }
+}

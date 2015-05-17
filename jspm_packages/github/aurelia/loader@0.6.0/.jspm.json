@@ -1,0 +1,84 @@
+{
+  "name": "aurelia-loader",
+  "version": "0.6.0",
+  "description": "An abstract module which specifies an interface for loading modules and view templates.",
+  "keywords": [
+    "aurelia",
+    "loader",
+    "modules"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/loader/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/loader"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "aurelia-html-template-element": "github:aurelia/html-template-element@^0.2.0",
+      "aurelia-path": "github:aurelia/path@^0.6.0",
+      "core-js": "npm:core-js@^0.9.5",
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.6.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "github:zloirock/core-js@^0.8.1"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "github:zloirock/core-js@^0.8.1"
+  },
+  "aurelia": {
+    "usedBy": [
+      "aurelia-framework",
+      "aurelia-loader-systemjs",
+      "aurelia-templating"
+    ],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "aurelia-html-template-element": "github:aurelia/html-template-element@^0.2.0",
+    "aurelia-path": "github:aurelia/path@^0.6.0",
+    "core-js": "npm:core-js@^0.9.5",
+    "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.6.1"
+  }
+}

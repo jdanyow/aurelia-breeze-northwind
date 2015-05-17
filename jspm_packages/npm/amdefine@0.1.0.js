@@ -1,0 +1,1 @@
+module.exports = require("npm:amdefine@0.1.0/amdefine");

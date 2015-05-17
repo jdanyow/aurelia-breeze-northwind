@@ -1,0 +1,92 @@
+{
+  "name": "aurelia-framework",
+  "version": "0.11.0",
+  "description": "The aurelia framework brings together all the required core aurelia libraries into a ready-to-go application-building platform.",
+  "keywords": [
+    "aurelia",
+    "framework",
+    "spa"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/framework/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/framework"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "aurelia-binding": "github:aurelia/binding@^0.6.0",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.0",
+      "aurelia-loader": "github:aurelia/loader@^0.6.0",
+      "aurelia-logging": "github:aurelia/logging@^0.4.0",
+      "aurelia-metadata": "github:aurelia/metadata@^0.5.0",
+      "aurelia-path": "github:aurelia/path@^0.6.0",
+      "aurelia-task-queue": "github:aurelia/task-queue@^0.4.0",
+      "aurelia-templating": "github:aurelia/templating@^0.11.0",
+      "core-js": "npm:core-js@^0.9.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.5"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.5"
+  },
+  "aurelia": {
+    "usedBy": [
+      "aurelia-bootstrapper"
+    ],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "aurelia-binding": "github:aurelia/binding@^0.6.0",
+    "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.0",
+    "aurelia-loader": "github:aurelia/loader@^0.6.0",
+    "aurelia-logging": "github:aurelia/logging@^0.4.0",
+    "aurelia-metadata": "github:aurelia/metadata@^0.5.0",
+    "aurelia-path": "github:aurelia/path@^0.6.0",
+    "aurelia-task-queue": "github:aurelia/task-queue@^0.4.0",
+    "aurelia-templating": "github:aurelia/templating@^0.11.0",
+    "core-js": "npm:core-js@^0.9.5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "registry": "npm",
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "events-browserify": "events-browserify@0.0.1"
+  }
+}

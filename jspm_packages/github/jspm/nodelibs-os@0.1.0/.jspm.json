@@ -1,0 +1,10 @@
+{
+  "registry": "npm",
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "os-browserify": "os-browserify@^0.1.2"
+  }
+}

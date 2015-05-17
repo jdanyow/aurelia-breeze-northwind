@@ -1,0 +1,87 @@
+{
+  "name": "aurelia-metadata",
+  "version": "0.5.0",
+  "description": "Utilities for reading and writing the metadata of JavaScript functions.",
+  "keywords": [
+    "aurelia",
+    "metadata",
+    "annotations"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/metadata/issues"
+  },
+  "license": "MIT",
+  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurelia/metadata"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "core-js": "npm:core-js@^0.9.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.5"
+    }
+  },
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.5"
+  },
+  "aurelia": {
+    "usedBy": [
+      "aurelia-binding",
+      "aurelia-dependency-injection",
+      "aurelia-framework",
+      "aurelia-loader-default",
+      "aurelia-templating",
+      "aurelia-templating-router"
+    ],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        },
+        {
+          "rel": "about",
+          "mediaType": "text/markdown",
+          "title": "What is Metadata?",
+          "href": "doc/what-is-metadata.md"
+        }
+      ]
+    }
+  },
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "registry": "github",
+  "dependencies": {
+    "core-js": "npm:core-js@^0.9.5"
+  }
+}
