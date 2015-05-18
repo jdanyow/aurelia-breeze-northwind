@@ -18,7 +18,7 @@ System.config({
 System.config({
   "map": {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.12.0",
-    "aurelia-breeze": "github:jdanyow/aurelia-breeze@0.5.0",
+    "aurelia-breeze": "github:jdanyow/aurelia-breeze@0.5.1",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.7.1",
     "aurelia-framework": "github:aurelia/framework@0.11.0",
     "aurelia-router": "github:aurelia/router@0.8.1",
@@ -134,7 +134,7 @@ System.config({
       "css": "github:systemjs/plugin-css@0.1.10",
       "jquery": "github:components/jquery@2.1.4"
     },
-    "github:jdanyow/aurelia-breeze@0.5.0": {
+    "github:jdanyow/aurelia-breeze@0.5.1": {
       "aurelia-binding": "github:aurelia/binding@0.6.1",
       "aurelia-http-client": "github:aurelia/http-client@0.8.1",
       "breeze": "npm:breeze-client@1.5.5"
