@@ -13,7 +13,7 @@
           <th>Employee</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="cursor-pointer">
         <tr repeat.for="order of orders" click.delegate="$parent.openOrder(order)">
           <td>${order.OrderID}</td>
           <td>${order.OrderDate | dateFormat:'M/D/YYYY'}</td>

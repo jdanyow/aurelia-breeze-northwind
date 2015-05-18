@@ -19,7 +19,7 @@
         <th>Total</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="cursor-pointer">
       <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.editDetail(detail)">
         <td click.delegate="$parent.removeDetail(detail)">
           <i class="mdi-navigation-close red-text darken-4" />

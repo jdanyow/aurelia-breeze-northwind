@@ -6,9 +6,9 @@ var customersQuery = new breeze.EntityQuery
   .orderBy('CompanyName');
 
 var productsQuery = new breeze.EntityQuery
-    .from('Products')
-    .select('ProductID, ProductName')
-    .orderBy('ProductName');
+  .from('Products')
+  .select('ProductID, ProductName')
+  .orderBy('ProductName');
 
 export class Lookups {
   customers;
