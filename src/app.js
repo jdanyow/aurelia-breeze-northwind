@@ -1,4 +1,12 @@
+import {inject} from './aurelia-dependency-injection';
+import {Lookups} from './lookups';
+
+@inject(Lookups)
 export class App {
+  constructor(lookups) {
+    this.lookups = lookups;
+  }
+
   configureRouter(config, router) {
     config.title = 'Northwind';
     config.map([
@@ -8,5 +16,9 @@ export class App {
       { route: 'employees', moduleId: './employees',             nav: true, title: 'Employees' },
     ]);
     this.router = router;
+  }
+
+  activate() {
+    return this.lookups.load();
   }
 }

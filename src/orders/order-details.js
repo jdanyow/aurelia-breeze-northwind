@@ -1,27 +1,20 @@
 import {inject} from 'aurelia-dependency-injection';
-import {OrderService} from './order-service';
+import {Lookups} from '../lookups';
 
-@inject(OrderService)
+@inject(Lookups)
 export class OrderDetails {
   order;
   products;
   productsIndex = {};
   detail = null;
 
-  constructor(service) {
-    this.service = service;
+  constructor(lookups) {
+    this.products = lookups.products;
+    this.products.forEach(p => this.productsIndex[p.ProductID] = p.ProductName);
   }
 
   activate(order) {
     this.order = order;
-
-    this.detail = order.OrderDetails[0] || null;
-
-    return this.service.getProducts()
-      .then(products => {
-        this.products = products;
-        products.forEach(p => this.productsIndex[p.ProductID] = p.ProductName);
-      });
   }
 
   addDetail() {

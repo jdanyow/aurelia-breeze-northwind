@@ -1,9 +1,10 @@
-import {inject} from 'aurelia-dependency-injection';
+import {inject, singleton} from 'aurelia-dependency-injection';
 import {AppRouter} from 'aurelia-router';
 import {OrderService} from './order-service';
 import settings from '../settings';
 
 @inject(AppRouter, OrderService)
+@singleton()
 export class OrdersList {
   router;
   service;
@@ -23,9 +24,7 @@ export class OrdersList {
   }
 
   load() {
-    this.orders = [];
     this.isLoading = true;
-
     this.service.getPage(this.pageIndex)
       .then(result => {
         this.orders = result.orders;
@@ -40,7 +39,7 @@ export class OrdersList {
   }
 
   openOrder(order) {
-    this.router.navigate('orders/' + order.OrderID.toString(10));
+    this.router.navigate('orders/' + order.OrderID);
   }
 
   addOrder() {

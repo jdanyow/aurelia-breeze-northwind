@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', './order-service'], function (_export) {
+System.register(['aurelia-dependency-injection', '../lookups'], function (_export) {
   'use strict';
 
-  var inject, OrderService, OrderDetails;
+  var inject, Lookups, OrderDetails;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -10,18 +10,23 @@ System.register(['aurelia-dependency-injection', './order-service'], function (_
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
-    }, function (_orderService) {
-      OrderService = _orderService.OrderService;
+    }, function (_lookups) {
+      Lookups = _lookups.Lookups;
     }],
     execute: function () {
       OrderDetails = (function () {
-        function OrderDetails(service) {
+        function OrderDetails(lookups) {
+          var _this = this;
+
           _classCallCheck(this, _OrderDetails);
 
           this.productsIndex = {};
           this.detail = null;
 
-          this.service = service;
+          this.products = lookups.products;
+          this.products.forEach(function (p) {
+            return _this.productsIndex[p.ProductID] = p.ProductName;
+          });
         }
 
         var _OrderDetails = OrderDetails;
@@ -29,18 +34,7 @@ System.register(['aurelia-dependency-injection', './order-service'], function (_
         _createClass(_OrderDetails, [{
           key: 'activate',
           value: function activate(order) {
-            var _this = this;
-
             this.order = order;
-
-            this.detail = order.OrderDetails[0] || null;
-
-            return this.service.getProducts().then(function (products) {
-              _this.products = products;
-              products.forEach(function (p) {
-                return _this.productsIndex[p.ProductID] = p.ProductName;
-              });
-            });
           }
         }, {
           key: 'addDetail',
@@ -83,7 +77,7 @@ System.register(['aurelia-dependency-injection', './order-service'], function (_
           }
         }]);
 
-        OrderDetails = inject(OrderService)(OrderDetails) || OrderDetails;
+        OrderDetails = inject(Lookups)(OrderDetails) || OrderDetails;
         return OrderDetails;
       })();
 
@@ -91,4 +85,4 @@ System.register(['aurelia-dependency-injection', './order-service'], function (_
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVycy9vcmRlci1kZXRhaWxzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs0QkFJYSxZQUFZOzs7Ozs7OzsyQ0FKakIsTUFBTTs7bUNBQ04sWUFBWTs7O0FBR1Asa0JBQVk7QUFNWixpQkFOQSxZQUFZLENBTVgsT0FBTyxFQUFFOzs7ZUFIckIsYUFBYSxHQUFHLEVBQUU7ZUFDbEIsTUFBTSxHQUFHLElBQUk7O0FBR1gsY0FBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUM7U0FDeEI7OzRCQVJVLFlBQVk7Ozs7aUJBVWYsa0JBQUMsS0FBSyxFQUFFOzs7QUFDZCxnQkFBSSxDQUFDLEtBQUssR0FBRyxLQUFLLENBQUM7O0FBRW5CLGdCQUFJLENBQUMsTUFBTSxHQUFHLEtBQUssQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLElBQUksSUFBSSxDQUFDOztBQUU1QyxtQkFBTyxJQUFJLENBQUMsT0FBTyxDQUFDLFdBQVcsRUFBRSxDQUM5QixJQUFJLENBQUMsVUFBQSxRQUFRLEVBQUk7QUFDaEIsb0JBQUssUUFBUSxHQUFHLFFBQVEsQ0FBQztBQUN6QixzQkFBUSxDQUFDLE9BQU8sQ0FBQyxVQUFBLENBQUM7dUJBQUksTUFBSyxhQUFhLENBQUMsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxXQUFXO2VBQUEsQ0FBQyxDQUFDO2FBQ3hFLENBQUMsQ0FBQztXQUNOOzs7aUJBRVEscUJBQUc7QUFDVixnQkFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxhQUFhLENBQ2hELFlBQVksQ0FBQyxhQUFhLEVBQUUsRUFBRSxPQUFPLEVBQUUsSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLEVBQUUsQ0FBQyxDQUFDO0FBQ2hFLGdCQUFJLENBQUMsVUFBVSxFQUFFLENBQUM7V0FDbkI7OztpQkFFUyxvQkFBQyxNQUFNLEVBQUU7QUFDakIsZ0JBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFDO0FBQ3JCLGdCQUFJLENBQUMsVUFBVSxFQUFFLENBQUM7V0FDbkI7OztpQkFFVyxzQkFBQyxNQUFNLEVBQUU7QUFDbkIsa0JBQU0sQ0FBQyxZQUFZLENBQUMsVUFBVSxFQUFFLENBQUM7V0FDbEM7OztpQkFFUyxzQkFBRztBQUNYLGFBQUMsQ0FBQyxTQUFTLENBQUMsQ0FBQyxTQUFTLEVBQUUsQ0FBQztXQUMxQjs7O2lCQUVVLHVCQUFHO0FBQ1osYUFBQyxDQUFDLFNBQVMsQ0FBQyxDQUFDLFVBQVUsRUFBRSxDQUFDO1dBQzNCOzs7aUJBRVksdUJBQUMsTUFBTSxFQUFFO0FBQ3BCLG1CQUFPLE1BQU0sQ0FBQyxRQUFRLEdBQUcsTUFBTSxDQUFDLFNBQVMsSUFBSSxDQUFDLEdBQUcsTUFBTSxDQUFDLFFBQVEsQ0FBQSxBQUFDLENBQUM7V0FDbkU7OztlQUVZLFlBQUc7QUFDZCxtQkFBTyxJQUFJLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxVQUFDLENBQUMsRUFBRSxDQUFDO3FCQUFLLENBQUMsR0FBRyxDQUFDO2FBQUEsRUFBRSxDQUFDLENBQUMsQ0FBQztXQUNuRjs7O0FBbkRVLG9CQUFZLEdBRHhCLE1BQU0sQ0FBQyxZQUFZLENBQUMsQ0FDUixZQUFZLEtBQVosWUFBWTtlQUFaLFlBQVk7Ozs4QkFBWixZQUFZIiwiZmlsZSI6Im9yZGVycy9vcmRlci1kZXRhaWxzLmpzIiwic291cmNlUm9vdCI6Ii4uL3NyYy8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVycy9vcmRlci1kZXRhaWxzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozt1QkFJYSxZQUFZOzs7Ozs7OzsyQ0FKakIsTUFBTTs7eUJBQ04sT0FBTzs7O0FBR0Ysa0JBQVk7QUFNWixpQkFOQSxZQUFZLENBTVgsT0FBTyxFQUFFOzs7OztlQUhyQixhQUFhLEdBQUcsRUFBRTtlQUNsQixNQUFNLEdBQUcsSUFBSTs7QUFHWCxjQUFJLENBQUMsUUFBUSxHQUFHLE9BQU8sQ0FBQyxRQUFRLENBQUM7QUFDakMsY0FBSSxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsVUFBQSxDQUFDO21CQUFJLE1BQUssYUFBYSxDQUFDLENBQUMsQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLENBQUMsV0FBVztXQUFBLENBQUMsQ0FBQztTQUM3RTs7NEJBVFUsWUFBWTs7OztpQkFXZixrQkFBQyxLQUFLLEVBQUU7QUFDZCxnQkFBSSxDQUFDLEtBQUssR0FBRyxLQUFLLENBQUM7V0FDcEI7OztpQkFFUSxxQkFBRztBQUNWLGdCQUFJLENBQUMsTUFBTSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDLGFBQWEsQ0FDaEQsWUFBWSxDQUFDLGFBQWEsRUFBRSxFQUFFLE9BQU8sRUFBRSxJQUFJLENBQUMsS0FBSyxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUM7QUFDaEUsZ0JBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztXQUNuQjs7O2lCQUVTLG9CQUFDLE1BQU0sRUFBRTtBQUNqQixnQkFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7QUFDckIsZ0JBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztXQUNuQjs7O2lCQUVXLHNCQUFDLE1BQU0sRUFBRTtBQUNuQixrQkFBTSxDQUFDLFlBQVksQ0FBQyxVQUFVLEVBQUUsQ0FBQztXQUNsQzs7O2lCQUVTLHNCQUFHO0FBQ1gsYUFBQyxDQUFDLFNBQVMsQ0FBQyxDQUFDLFNBQVMsRUFBRSxDQUFDO1dBQzFCOzs7aUJBRVUsdUJBQUc7QUFDWixhQUFDLENBQUMsU0FBUyxDQUFDLENBQUMsVUFBVSxFQUFFLENBQUM7V0FDM0I7OztpQkFFWSx1QkFBQyxNQUFNLEVBQUU7QUFDcEIsbUJBQU8sTUFBTSxDQUFDLFFBQVEsR0FBRyxNQUFNLENBQUMsU0FBUyxJQUFJLENBQUMsR0FBRyxNQUFNLENBQUMsUUFBUSxDQUFBLEFBQUMsQ0FBQztXQUNuRTs7O2VBRVksWUFBRztBQUNkLG1CQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLENBQUMsTUFBTSxDQUFDLFVBQUMsQ0FBQyxFQUFFLENBQUM7cUJBQUssQ0FBQyxHQUFHLENBQUM7YUFBQSxFQUFFLENBQUMsQ0FBQyxDQUFDO1dBQ25GOzs7QUE1Q1Usb0JBQVksR0FEeEIsTUFBTSxDQUFDLE9BQU8sQ0FBQyxDQUNILFlBQVksS0FBWixZQUFZO2VBQVosWUFBWTs7OzhCQUFaLFlBQVkiLCJmaWxlIjoib3JkZXJzL29yZGVyLWRldGFpbHMuanMiLCJzb3VyY2VSb290IjoiLi4vc3JjLyJ9

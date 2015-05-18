@@ -2,7 +2,7 @@
   <!-- header -->
   <div class="row">
     <h4 class="left">Items</h4>
-    <button type="button" click.delegate="addDetail()" class="right waves-effect waves-light btn header-butto">
+    <button type="button" click.delegate="addDetail()" class="right waves-effect waves-light btn header-button">
       Add
     </button>
   </div>
@@ -55,15 +55,15 @@
       <div class="row">
         <div class="input-field col s4">
           <input id="UnitPrice" type="number" value.bind="detail.UnitPrice">
-          <label for="UnitPrice" materialize>Unit Price</label>
+          <label for="UnitPrice" class="active">Unit Price</label>
         </div>
         <div class="input-field col s4">
           <input id="Quantity" type="number" value.bind="detail.Quantity">
-          <label for="Quantity" materialize>Quantity</label>
+          <label for="Quantity" class="active">Quantity</label>
         </div>
         <div class="input-field col s4">
           <input id="Discount" type="number" value.bind="detail.Discount">
-          <label for="Discount" materialize>Discount</label>
+          <label for="Discount" class="active">Discount</label>
         </div>
       </div>
     </div>

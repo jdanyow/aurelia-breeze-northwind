@@ -1,39 +1,48 @@
 import {inject} from 'aurelia-dependency-injection';
 import {OrderService} from './order-service';
+import {Lookups} from '../lookups';
 
-@inject(OrderService)
+@inject(OrderService, Lookups)
 export class Order {
   service;
   entityManager;
   order;
   customers;
   products;
-  isBusy = false;
 
-  constructor(service) {
+  constructor(service, lookups) {
     this.service = service;
+    this.customers = lookups.customers;
   }
 
   activate(info) {
-    var orderPromise, customersPromise, productsPromise;
+    var promise;
 
     // load or create the order entity.
     if (info.id === 'new') {
-      orderPromise = this.service.createOrder();
+      promise = this.service.createOrder();
     } else {
-      orderPromise = this.service.getOrder(info.id);
+      promise = this.service.getOrder(info.id);
     }
 
-    orderPromise = orderPromise.then(result => {
+    return promise.then(result => {
       this.entityManager = result.entityManager;
       this.order = result.order;
     });
+  }
 
-    // load the customers lookup - used to populate the customer drop-down
-    customersPromise = this.service.getCustomerLookup()
-      .then(customers => this.customers = customers);
+  canDeactivate() {
+    if (this.hasChanges) {
+      // use a timeout to throttle the amount of toast we pop.
+      clearTimeout(this._toastTimeout);
+      this._toastTimeout = setTimeout(() => Materialize.toast('Navigation cancelled.  Save your changes!', 2000), 50);
 
-    return Promise.all([orderPromise, customersPromise]);
+      // cancel navigation.
+      return false;
+    }
+
+    // permit navigation.
+    return true;
   }
 
   get hasChanges() {
@@ -41,19 +50,18 @@ export class Order {
   }
 
   save() {
-    // var id = this.order.OrderID;
-    // this.isBusy = true;
-    // this.entityManager.saveChanges()
-    //   .then(saveResult => {
-    //     this.isBusy = false;
-    //     if (id !== this.order.OrderID) {
-    //       // todo: update window.location.
-    //     }
-    //   });
-    alert('The breeze controller does not expose a SaveChanges action.');
+    // fake save...
+    this.entityManager.acceptChanges();
+    Materialize.toast('Changes saved.', 2000)
   }
 
   revert() {
     this.entityManager.rejectChanges();
+    Materialize.toast('Changes reverted.', 2000)
+
+    // workaround Materialize datepicker binding timezone issue.
+    if (this.hasChanges) {
+      this.entityManager.rejectChanges();
+    }
   }
 }

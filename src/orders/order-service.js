@@ -46,32 +46,4 @@ export class OrderService {
         };
       });
   }
-
-  getCustomerLookup() {
-    var query = new breeze.EntityQuery
-      .from('Customers')
-      .select('CustomerID, CompanyName')
-      .orderBy('CompanyName');
-
-    return createEntityManager()
-      .then(em => em.executeQuery(query))
-      .then(queryResult => queryResult.results);
-  }
-
-  getProducts() {
-    var query;
-
-    if (this._products) {
-      return new Promise((resolve, reject) => resolve(this._products));
-    }
-
-    query = new breeze.EntityQuery
-      .from('Products')
-      .select('ProductID, ProductName')
-      .orderBy('ProductName');
-
-    return createEntityManager()
-      .then(em => em.executeQuery(query))
-      .then(queryResult => (this._products = queryResult.results));
-  }
 }

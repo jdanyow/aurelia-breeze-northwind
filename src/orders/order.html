@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <form submit.delegate="save()">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
       <div class="row">
         <h3 class="left">Order ${order.OrderID < 0 ? '(new)' : '#' + order.OrderID}</h3>
         <button type="button" class="right waves-effect waves-light btn header-button"
@@ -14,6 +15,8 @@
           Save
         </button>
       </div>
+
+      <!-- order fields -->
       <div class="row">
         <div class="input-field col s12 m6">
           <select value.bind="order.CustomerID" materialize="select">
@@ -32,6 +35,7 @@
         </div>
       </div>
 
+      <!-- order shipping fields -->
       <h4>Shipping</h4>
       <div class="row">
         <div class="input-field col s12 m5">
@@ -66,6 +70,7 @@
         </div>
       </div>
 
+      <!-- order details grid -->
       <compose model.bind="order" view-model="orders/order-details"></compose>
     </form>
   </div>

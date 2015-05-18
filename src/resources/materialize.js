@@ -14,7 +14,7 @@ function fireEvent(element, name) {
 
 /**
 * Custom html attribute that turns on javascript based materialize-css compoenents.
-* Also smooths out some issues with materialize and data-binding. 
+* Also smooths out some issues with materialize and data-binding.
 */
 @customAttribute('materialize')
 @inject(Element, TaskQueue)
@@ -63,7 +63,7 @@ export class Materialize {
 
   fixLabelOverlap() {
     var $el = $(this.element);
-    if ($el.prevUntil(null, 'input').val()) {
+    if ($el.prevUntil(null, 'input').val().length) {
       $el.addClass('active');
     }
   }
