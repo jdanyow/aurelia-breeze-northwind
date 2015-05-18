@@ -3,6 +3,12 @@
     <form submit.delegate="save()">
       <div class="row">
         <h3 class="left">Order ${order.OrderID < 0 ? '(new)' : '#' + order.OrderID}</h3>
+        <!-- <button type="button" class="right waves-effect waves-light btn header-button"
+                disabled.one-way="!hasChanges"
+                show.bind="!order.entityAspect.entityState.isAdded()"
+                click.delegate="revert()">
+          Revert
+        </button> -->
         <button type="submit" class="right waves-effect waves-light btn header-button"
                 disabled.one-way="!hasChanges">
           Save
@@ -37,7 +43,7 @@
           <label for="ShipCountry" class.one-time="order.ShipCountry ? 'active' : ''">Country</label>
         </div>
         <div class="input-field col s12 m2">
-          <input id="Freight" type="text" value.bind="order.Freight">
+          <input id="Freight" type="number" value.bind="order.Freight">
           <label for="Freight" class.one-time="order.Freight ? 'active' : ''">Freight</label>
         </div>
       </div>
@@ -60,33 +66,7 @@
         </div>
       </div>
 
-      <h4>Items</h4>
-      <table class="bordered hoverable table-responsive">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Discount</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.openDetail(detail)">
-            <td>${$parent.products[detail.ProductID]}</td>
-            <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
-            <td>${detail.Quantity | numberFormat:'0,0'}</td>
-            <td>${detail.Discount | numberFormat:'0%'}</td>
-            <td>${$parent.calculateCost(detail) | numberFormat:'$0,0.00'}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4"></td>
-            <td><strong>${total | numberFormat:'$0,0.00'}</strong></td>
-          </tr>
-        <tfoot>
-      </table>
+      <compose model.bind="order" view-model="orders/order-details"></compose>
     </form>
   </div>
 </template>

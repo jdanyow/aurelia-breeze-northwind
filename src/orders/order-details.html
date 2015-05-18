@@ -1,0 +1,72 @@
+<template>
+  <!-- header -->
+  <div class="row">
+    <h4 class="left">Items</h4>
+    <button type="button" click.delegate="addDetail()" class="right waves-effect waves-light btn header-butto">
+      Add
+    </button>
+  </div>
+
+  <!-- grid -->
+  <table class="bordered hoverable table-responsive">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.editDetail(detail)">
+        <td click.delegate="$parent.removeDetail(detail)"><i class="mdi-navigation-close" /></td>
+        <td>${$parent.productsIndex[detail.ProductID]}</td>
+        <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
+        <td>${detail.Quantity | numberFormat:'0,0'}</td>
+        <td>${detail.Discount | numberFormat:'0%'}</td>
+        <td>${detail.Quantity * detail.UnitPrice * (1 - detail.Discount) | numberFormat:'$0,0.00'}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"></td>
+        <td><strong>${total | numberFormat:'$0,0.00'}</strong></td>
+      </tr>
+    <tfoot>
+  </table>
+
+  <!-- modal -->
+  <div id="detail" class="modal">
+    <div class="modal-content">
+      <h4>Order Detail</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <select value.bind="detail.ProductID" class="browser-default" id="Product">
+            <option model.bind="0">Select a product</option>
+            <option repeat.for="product of products" model.bind="product.ProductID">${product.ProductName}</option>
+          </select>
+          <label for="Product" class="active">Product</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="UnitPrice" type="number" value.bind="detail.UnitPrice">
+          <label for="UnitPrice" class.one-time="detail.UnitPrice ? 'active' : ''">Unit Price</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="Quantity" type="number" value.bind="detail.Quantity">
+          <label for="Quantity" class.one-time="detail.Quantity ? 'active' : ''">Quantity</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="Discount" type="number" value.bind="detail.Discount">
+          <label for="Discount" class.one-time="detail.Discount ? 'active' : ''">Discount</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" click.delegate="closeDetail" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+  </div>
+</template>

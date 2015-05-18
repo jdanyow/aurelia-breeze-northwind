@@ -58,18 +58,20 @@ export class OrderService {
       .then(queryResult => queryResult.results);
   }
 
-  getProductsIndex() {
-    var query = new breeze.EntityQuery
+  getProducts() {
+    var query;
+
+    if (this._products) {
+      return new Promise((resolve, reject) => resolve(this._products));
+    }
+
+    query = new breeze.EntityQuery
       .from('Products')
       .select('ProductID, ProductName')
       .orderBy('ProductName');
 
     return createEntityManager()
       .then(em => em.executeQuery(query))
-      .then(queryResult => {
-        var index = {};
-        queryResult.results.forEach(p => index[p.ProductID] = p.ProductName);
-        return index;
-      });
+      .then(queryResult => (this._products = queryResult.results));
   }
 }

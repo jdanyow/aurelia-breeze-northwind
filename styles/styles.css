@@ -1,4 +1,5 @@
-.splash > h1 {
+.splash > h1,
+.splash > h5 {
   text-align: center;
 }
 

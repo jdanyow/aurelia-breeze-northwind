@@ -7,6 +7,7 @@ export class Order {
   entityManager;
   order;
   customers;
+  products;
   isBusy = false;
 
   constructor(service) {
@@ -32,11 +33,7 @@ export class Order {
     customersPromise = this.service.getCustomerLookup()
       .then(customers => this.customers = customers);
 
-    // load the products lookup - used to populate display the order details
-    productsPromise = this.service.getProductsIndex()
-      .then(products => this.products = products);
-
-    return Promise.all([orderPromise, customersPromise, productsPromise]);
+    return Promise.all([orderPromise, customersPromise]);
   }
 
   get hasChanges() {
@@ -56,15 +53,7 @@ export class Order {
     alert('The breeze controller does not expose a SaveChanges action.');
   }
 
-  openDetail(detail) {
-
-  }
-
-  calculateCost(detail) {
-    return detail.Quantity * detail.UnitPrice * (1 - detail.Discount);
-  }
-
-  get total() {
-    return this.order.OrderDetails.map(this.calculateCost).reduce((a, b) => a + b, 0);
+  revert() {
+    this.entityManager.rejectChanges();
   }
 }
