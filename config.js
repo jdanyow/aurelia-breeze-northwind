@@ -22,6 +22,7 @@ System.config({
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.7.1",
     "aurelia-framework": "github:aurelia/framework@0.11.0",
     "aurelia-router": "github:aurelia/router@0.8.1",
+    "aurelia-task-queue": "github:aurelia/task-queue@0.4.0",
     "babel": "npm:babel-core@5.4.3",
     "babel-runtime": "npm:babel-runtime@5.4.3",
     "breeze": "npm:breeze-client@1.5.5",

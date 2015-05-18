@@ -1,4 +1,5 @@
 import {inject, customAttribute} from 'aurelia-framework';
+import {TaskQueue} from 'aurelia-task-queue';
 
 function createEvent(name) {
   var event = document.createEvent('Event');
@@ -11,14 +12,23 @@ function fireEvent(element, name) {
   element.dispatchEvent(event);
 }
 
+/**
+* Custom html attribute that turns on javascript based materialize-css compoenents.
+* Also smooths out some issues with materialize and data-binding. 
+*/
 @customAttribute('materialize')
-@inject(Element)
+@inject(Element, TaskQueue)
 export class Materialize {
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
   }
 
-  attached() {
+  bind() {
+    if (!this.value) {
+      this.value = this.element.nodeName.toLowerCase();
+    }
+
     // handle the details of configuring the materialize javascript components...
     switch(this.value) {
       case 'datepicker':
@@ -35,7 +45,11 @@ export class Materialize {
         break;
 
       case 'sidenav':
-        $(this.element).sideNav();
+        setTimeout(() => $(this.element).sideNav(), 10);
+        break;
+
+      case 'label':
+        this.taskQueue.queueMicroTask({ call: () => this.fixLabelOverlap() });
         break;
 
       default:
@@ -45,5 +59,12 @@ export class Materialize {
 
   detached() {
     // todo: destroy
+  }
+
+  fixLabelOverlap() {
+    var $el = $(this.element);
+    if ($el.prevUntil(null, 'input').val()) {
+      $el.addClass('active');
+    }
   }
 }

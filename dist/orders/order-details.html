@@ -21,7 +21,9 @@
     </thead>
     <tbody>
       <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.editDetail(detail)">
-        <td click.delegate="$parent.removeDetail(detail)"><i class="mdi-navigation-close" /></td>
+        <td click.delegate="$parent.removeDetail(detail)">
+          <i class="mdi-navigation-close red-text darken-4" />
+        </td>
         <td>${$parent.productsIndex[detail.ProductID]}</td>
         <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
         <td>${detail.Quantity | numberFormat:'0,0'}</td>
@@ -32,7 +34,7 @@
     <tfoot>
       <tr>
         <td colspan="5"></td>
-        <td><strong>${total | numberFormat:'$0,0.00'}</strong></td>
+        <td><strong>${totalCost | numberFormat:'$0,0.00'}</strong></td>
       </tr>
     <tfoot>
   </table>
@@ -43,7 +45,7 @@
       <h4>Order Detail</h4>
       <div class="row">
         <div class="input-field col s12">
-          <select value.bind="detail.ProductID" class="browser-default" id="Product">
+          <select value.bind="detail.ProductID" id="Product" class="browser-default">
             <option model.bind="0">Select a product</option>
             <option repeat.for="product of products" model.bind="product.ProductID">${product.ProductName}</option>
           </select>
@@ -53,15 +55,15 @@
       <div class="row">
         <div class="input-field col s4">
           <input id="UnitPrice" type="number" value.bind="detail.UnitPrice">
-          <label for="UnitPrice" class.one-time="detail.UnitPrice ? 'active' : ''">Unit Price</label>
+          <label for="UnitPrice" materialize>Unit Price</label>
         </div>
         <div class="input-field col s4">
           <input id="Quantity" type="number" value.bind="detail.Quantity">
-          <label for="Quantity" class.one-time="detail.Quantity ? 'active' : ''">Quantity</label>
+          <label for="Quantity" materialize>Quantity</label>
         </div>
         <div class="input-field col s4">
           <input id="Discount" type="number" value.bind="detail.Discount">
-          <label for="Discount" class.one-time="detail.Discount ? 'active' : ''">Discount</label>
+          <label for="Discount" materialize>Discount</label>
         </div>
       </div>
     </div>

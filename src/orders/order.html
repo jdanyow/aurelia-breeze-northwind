@@ -3,12 +3,12 @@
     <form submit.delegate="save()">
       <div class="row">
         <h3 class="left">Order ${order.OrderID < 0 ? '(new)' : '#' + order.OrderID}</h3>
-        <!-- <button type="button" class="right waves-effect waves-light btn header-button"
+        <button type="button" class="right waves-effect waves-light btn header-button"
                 disabled.one-way="!hasChanges"
                 show.bind="!order.entityAspect.entityState.isAdded()"
                 click.delegate="revert()">
           Revert
-        </button> -->
+        </button>
         <button type="submit" class="right waves-effect waves-light btn header-button"
                 disabled.one-way="!hasChanges">
           Save
@@ -24,11 +24,11 @@
         </div>
         <div class="input-field col s12 m3">
           <input id="OrderDate" type="text" materialize="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
-          <label for="OrderDate" class.one-time="order.OrderDate ? 'active' : ''">Order Date</label>
+          <label for="OrderDate" materialize>Order Date</label>
         </div>
         <div class="input-field col s12 m3">
           <input id="ShippedDate" type="text" materialize="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
-          <label for="ShippedDate" class.one-time="order.ShippedDate ? 'active' : ''">Shipped Date</label>
+          <label for="ShippedDate" materialize>Shipped Date</label>
         </div>
       </div>
 
@@ -36,33 +36,33 @@
       <div class="row">
         <div class="input-field col s12 m5">
           <input id="ShipName" type="text" value.bind="order.ShipName">
-          <label for="ShipName" class.one-time="order.ShipName ? 'active' : ''">Name</label>
+          <label for="ShipName" materialize>Name</label>
         </div>
         <div class="input-field col s12 m5">
           <input id="ShipCountry" type="text" value.bind="order.ShipCountry">
-          <label for="ShipCountry" class.one-time="order.ShipCountry ? 'active' : ''">Country</label>
+          <label for="ShipCountry" materialize>Country</label>
         </div>
         <div class="input-field col s12 m2">
           <input id="Freight" type="number" value.bind="order.Freight">
-          <label for="Freight" class.one-time="order.Freight ? 'active' : ''">Freight</label>
+          <label for="Freight" materialize>Freight</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m4">
           <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
-          <label for="ShipAddress" class.one-time="order.ShipAddress ? 'active' : ''">Address</label>
+          <label for="ShipAddress" materialize>Address</label>
         </div>
         <div class="input-field col s12 m4">
           <input id="ShipCity" type="text" value.bind="order.ShipCity">
-          <label for="ShipCity" class.one-time="order.ShipCity ? 'active' : ''">City</label>
+          <label for="ShipCity" materialize>City</label>
         </div>
         <div class="input-field col s12 m2">
           <input id="ShipRegion" type="text" value.bind="order.ShipRegion">
-          <label for="ShipRegion" class.one-time="order.ShipRegion ? 'active' : ''">Region</label>
+          <label for="ShipRegion" materialize>Region</label>
         </div>
         <div class="input-field col s12 m2">
           <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode">
-          <label for="ShipPostalCode" class.one-time="order.ShipPostalCode ? 'active' : ''">Postal Code</label>
+          <label for="ShipPostalCode" materialize>Postal Code</label>
         </div>
       </div>
 

@@ -1,4 +1,3 @@
-/* */ 
 System.register([], function (_export) {
   var _classCallCheck, _createClass, BreezePropertyObserver, BreezeObjectObserver;
 
@@ -86,10 +85,19 @@ System.register([], function (_export) {
         }, {
           key: "handleChanges",
           value: function handleChanges(change) {
-            var callbacks = this.callbacks[change.propertyName],
-                i,
-                ii,
-                newValue;
+            var callbacks, i, ii, newValue, key;
+
+            if (change.propertyName === null) {
+              callbacks = this.callbacks;
+              for (key in callbacks) {
+                if (callbacks.hasOwnProperty(key)) {
+                  this.handleChanges({ propertyName: key, oldValue: null });
+                }
+              }
+            } else {
+              callbacks = this.callbacks[change.propertyName];
+            }
+
             if (!callbacks) {
               return;
             }
