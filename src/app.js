@@ -9,9 +9,4 @@ export class App {
     ]);
     this.router = router;
   }
-
-  attached() {
-    // http://materializecss.com/navbar.html
-    $('.button-collapse').sideNav();
-  }
 }

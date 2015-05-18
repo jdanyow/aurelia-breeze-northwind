@@ -10,6 +10,6 @@ export class DateFormatValueConverter {
   fromView(value, format) {
     if (value === '')
       return null;
-    return moment.parse(value, format).toDate();
+    return moment(value, format).toDate();
   }
 }

@@ -39,31 +39,21 @@ export class Order {
     return Promise.all([orderPromise, customersPromise, productsPromise]);
   }
 
-  attached() {
-    // configure the materialize controls
-    setTimeout(() => {
-      $('select').material_select();
-      $('.datepicker').pickadate({
-        format: 'm/d/yyyy',
-        selectMonths: true,
-        selectYears: 15
-      });
-    }, 50);
-  }
-
-  get isDirty() {
+  get hasChanges() {
     return this.entityManager.hasChanges();
   }
 
   save() {
-    var id = this.entity.OrderID;
-    isBusy = true;
-    this.entityManager.saveChanges()
-      .then(saveResult => {
-        if (id !== this.entity.OrderID) {
-          // todo: update location.
-        }
-      });
+    // var id = this.order.OrderID;
+    // this.isBusy = true;
+    // this.entityManager.saveChanges()
+    //   .then(saveResult => {
+    //     this.isBusy = false;
+    //     if (id !== this.order.OrderID) {
+    //       // todo: update window.location.
+    //     }
+    //   });
+    alert('The breeze controller does not expose a SaveChanges action.');
   }
 
   openDetail(detail) {

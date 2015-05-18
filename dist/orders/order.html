@@ -1,52 +1,62 @@
 <template>
   <div class="container">
-    <form>
-      <h4>Order</h4>
+    <form submit.delegate="save()">
       <div class="row">
-        <div class="input-field col s8">
-          <select value.bind="order.CustomerID">
+        <h3 class="left">Order</h3>
+        <button type="submit" class="right waves-effect waves-light btn submit-button"
+                disabled.one-way="!hasChanges">
+          Save
+        </button>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m8">
+          <select value.bind="order.CustomerID" materialize="select">
             <option value="">Select a customer</option>
             <option repeat.for="customer of customers" value.bind="customer.CustomerID">${customer.CompanyName}</option>
           </select>
           <label for="Customer">Customer</label>
         </div>
-        <div class="input-field col s2">
-          <input id="OrderDate" type="text" class="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
+        <div class="input-field col s12 m2">
+          <input id="OrderDate" type="text" materialize="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
           <label for="OrderDate" class.one-time="order.OrderDate ? 'active' : ''">Order Date</label>
         </div>
-        <div class="input-field col s2">
-          <input id="ShippedDate" type="text" class="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
+        <div class="input-field col s12 m2">
+          <input id="ShippedDate" type="text" materialize="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
           <label for="ShippedDate" class.one-time="order.ShippedDate ? 'active' : ''">Shipped Date</label>
         </div>
       </div>
 
       <h4>Shipping</h4>
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field col s12 m5">
           <input id="ShipName" type="text" value.bind="order.ShipName">
           <label for="ShipName" class.one-time="order.ShipName ? 'active' : ''">Name</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col s12 m5">
+          <input id="ShipCountry" type="text" value.bind="order.ShipCountry">
+          <label for="ShipCountry" class.one-time="order.ShipCountry ? 'active' : ''">Country</label>
+        </div>
+        <div class="input-field col s12 m2">
           <input id="Freight" type="text" value.bind="order.Freight">
           <label for="Freight" class.one-time="order.Freight ? 'active' : ''">Freight</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s12 m4">
           <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
           <label for="ShipAddress" class.one-time="order.ShipAddress ? 'active' : ''">Address</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col s12 m4">
           <input id="ShipCity" type="text" value.bind="order.ShipCity">
           <label for="ShipCity" class.one-time="order.ShipCity ? 'active' : ''">City</label>
         </div>
-        <div class="input-field col s2">
+        <div class="input-field col s12 m2">
           <input id="ShipRegion" type="text" value.bind="order.ShipRegion">
-          <label for="ShipRegion" class.one-time="order.ShipRegion ? 'active' : ''">State</label>
+          <label for="ShipRegion" class.one-time="order.ShipRegion ? 'active' : ''">Region</label>
         </div>
-        <div class="input-field col s2">
-          <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode" maxlength="5">
-          <label for="ShipPostalCode" class.one-time="order.ShipPostalCode ? 'active' : ''">Zip</label>
+        <div class="input-field col s12 m2">
+          <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode">
+          <label for="ShipPostalCode" class.one-time="order.ShipPostalCode ? 'active' : ''">Postal Code</label>
         </div>
       </div>
 

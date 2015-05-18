@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">${router.title}</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" materialize="sidenav"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
         <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
           <a href.bind="route.href">${route.title}</a>
