@@ -2,25 +2,25 @@
   <div class="container">
     <form submit.delegate="save()">
       <div class="row">
-        <h3 class="left">Order</h3>
-        <button type="submit" class="right waves-effect waves-light btn submit-button"
+        <h3 class="left">Order ${order.OrderID < 0 ? '(new)' : '#' + order.OrderID}</h3>
+        <button type="submit" class="right waves-effect waves-light btn header-button"
                 disabled.one-way="!hasChanges">
           Save
         </button>
       </div>
       <div class="row">
-        <div class="input-field col s12 m8">
+        <div class="input-field col s12 m6">
           <select value.bind="order.CustomerID" materialize="select">
             <option value="">Select a customer</option>
             <option repeat.for="customer of customers" value.bind="customer.CustomerID">${customer.CompanyName}</option>
           </select>
           <label for="Customer">Customer</label>
         </div>
-        <div class="input-field col s12 m2">
+        <div class="input-field col s12 m3">
           <input id="OrderDate" type="text" materialize="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
           <label for="OrderDate" class.one-time="order.OrderDate ? 'active' : ''">Order Date</label>
         </div>
-        <div class="input-field col s12 m2">
+        <div class="input-field col s12 m3">
           <input id="ShippedDate" type="text" materialize="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
           <label for="ShippedDate" class.one-time="order.ShippedDate ? 'active' : ''">Shipped Date</label>
         </div>
