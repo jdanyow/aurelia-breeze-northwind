@@ -2,20 +2,9 @@
   <div class="container">
     <form submit.delegate="save()" novalidate>
       <!-- header -->
-      <div class="row">
-        <h3 class="left">Customer ${entity.CustomerID < 0 ? '(new)' : ''}</h3>
-        <button type="button" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges"
-                show.bind="!entity.entityAspect.entityState.isAdded()"
-                click.delegate="revert()">
-          Revert
-        </button>
-        <button type="submit" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges">
-          Save
-        </button>
-      </div>
+      <compose view="../entity-header.html"></compose>
 
+      <!-- customer fields -->
       <div class="row">
         <div class="input-field col s12 m4">
           <input id="CompanyName" type="text" value.bind="entity.CompanyName">

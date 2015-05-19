@@ -14,4 +14,11 @@ export class Employee extends EntityViewModel {
   get photo() {
     return 'data:image/png;base64,' + (this.entity.Photo || missingPhoto);
   }
+
+  get title() {
+    if (this.entity.FirstName || this.entity.LastName) {
+      return `${this.entity.FirstName} ${this.entity.LastName}`;
+    }
+    return 'Employee';
+  }
 }

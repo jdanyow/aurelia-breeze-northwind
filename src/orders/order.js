@@ -11,4 +11,11 @@ export class Order extends EntityViewModel {
     super(service);
     this.customers = lookups.customers;
   }
+
+  get title() {
+    if (this.entity.entityAspect.entityState.isAdded()) {
+      return 'New Order';
+    }
+    return `Order #${this.entity.OrderID}`;
+  }
 }

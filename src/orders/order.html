@@ -2,19 +2,7 @@
   <div class="container">
     <form submit.delegate="save()" novalidate>
       <!-- header -->
-      <div class="row">
-        <h3 class="left">Order ${entity.OrderID < 0 ? '(new)' : '#' + entity.OrderID}</h3>
-        <button type="button" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges"
-                show.bind="!entity.entityAspect.entityState.isAdded()"
-                click.delegate="revert()">
-          Revert
-        </button>
-        <button type="submit" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges">
-          Save
-        </button>
-      </div>
+      <compose view="../entity-header.html"></compose>
 
       <!-- order fields -->
       <div class="row">

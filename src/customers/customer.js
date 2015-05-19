@@ -8,4 +8,8 @@ export class Customer extends EntityViewModel {
   constructor(service, lookups) {
     super(service);
   }
+
+  get title() {
+    return this.entity.CompanyName || 'Customer';
+  }
 }

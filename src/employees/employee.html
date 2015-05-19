@@ -2,33 +2,19 @@
   <div class="container">
     <form submit.delegate="save()" novalidate>
       <!-- header -->
-      <div class="row">
-        <h3 class="left">Employee ${entity.EmployeeID < 0 ? '(new)' : '#' + entity.EmployeeID}</h3>
-        <button type="button" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges"
-                show.bind="!entity.entityAspect.entityState.isAdded()"
-                click.delegate="revert()">
-          Revert
-        </button>
-        <button type="submit" class="right waves-effect waves-light btn header-button"
-                disabled.one-way="!hasChanges">
-          Save
-        </button>
-      </div>
+      <compose view="../entity-header.html"></compose>
 
+      <!-- employee fields -->
       <div class="row">
-        <div class="col s12 m2">
-          <img src.one-time="photo" class="responsive-img circle"></img>
-        </div>
         <div class="col s12 m10">
           <div class="row">
             <div class="input-field col s12 m4">
-              <input id="LastName" type="text" value.bind="entity.LastName">
-              <label for="LastName" materialize>Last Name</label>
-            </div>
-            <div class="input-field col s12 m4">
               <input id="FirstName" type="text" value.bind="entity.FirstName">
               <label for="FirstName" materialize>First Name</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="LastName" type="text" value.bind="entity.LastName">
+              <label for="LastName" materialize>Last Name</label>
             </div>
             <div class="input-field col s12 m4">
               <input id="Title" type="text" value.bind="entity.Title">
@@ -54,6 +40,9 @@
             </div>
           </div>
         </div>
+        <div class="col s12 m2">
+          <img src.one-time="photo" class="responsive-img circle"></img>
+        </div>
       </div>
 
       <h4>Address</h4>
@@ -76,10 +65,12 @@
         </div>
       </div>
 
+      <h4>Notes</h4>
+
       <div class="row">
         <div class="input-field col s12">
           <textarea id="Notes" class="materialize-textarea" value.bind="entity.Notes"></textarea>
-          <label for="Notes">Notes</label>
+          <label for="Notes" class="active">Notes</label>
         </div>
       </div>
     </form>
