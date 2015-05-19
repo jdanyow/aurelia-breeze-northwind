@@ -2,12 +2,12 @@ import breeze from 'breeze';
 import settings from '../settings';
 import {createEntityManager} from '../entity-manager-factory';
 
-export class EmployeeService {
+export class CustomerService {
   getPage(pageIndex) {
     var query = new breeze.EntityQuery
-      .from('Employees')
-      .select('EmployeeID, FirstName, LastName, Title, HireDate, HomePhone, Extension')
-      .orderBy('LastName')
+      .from('Customers')
+      .select('CustomerID, CompanyName, ContactName, City, Phone, Fax')
+      .orderBy('CompanyName')
       .skip(pageIndex * settings.pageSize)
       .take(settings.pageSize)
       .inlineCount();
@@ -23,10 +23,10 @@ export class EmployeeService {
   }
 
   loadExisting(id) {
-    var employeeQuery = new breeze.EntityQuery().from('Employees').where('EmployeeID', '==', id);
+    var customerQuery = new breeze.EntityQuery().from('Customers').where('CustomerID', '==', id);
 
     return createEntityManager()
-      .then(em => em.executeQuery(employeeQuery))
+      .then(em => em.executeQuery(customerQuery))
       .then(queryResult => {
         return {
           entity: queryResult.results[0],
@@ -39,7 +39,7 @@ export class EmployeeService {
     return createEntityManager()
       .then(em => {
         return {
-          entity: em.createEntity('Employee'),
+          entity: em.createEntity('Customer'),
           entityManager: em
         };
       });

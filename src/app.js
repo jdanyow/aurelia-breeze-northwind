@@ -16,7 +16,7 @@ export class App {
     config.map([
       { route: '', redirect: 'orders' },
       { route: 'orders',    moduleId: './orders/orders-section',       nav: true, title: 'Orders' },
-      { route: 'customers', moduleId: './customers',                   nav: true, title: 'Customers' },
+      { route: 'customers', moduleId: './customers/customers-section', nav: true, title: 'Customers' },
       { route: 'employees', moduleId: './employees/employees-section', nav: true, title: 'Employees' },
     ]);
     this.router = router;
