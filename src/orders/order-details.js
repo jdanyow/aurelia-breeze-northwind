@@ -10,7 +10,7 @@ export class OrderDetails {
 
   constructor(lookups) {
     this.products = lookups.products;
-    this.products.forEach(p => this.productsIndex[p.ProductID] = p.ProductName);
+    this.products.forEach(p => this.productsIndex[p.ProductID] = p);
   }
 
   activate(order) {
@@ -19,7 +19,7 @@ export class OrderDetails {
 
   addDetail() {
     this.detail = this.order.entityAspect.entityManager
-      .createEntity('OrderDetail', { OrderID: this.order.OrderID });
+      .createEntity('OrderDetail', { OrderID: this.order.OrderID, Quantity: 1 });
     this.openDetail();
   }
 
@@ -32,11 +32,22 @@ export class OrderDetails {
     detail.entityAspect.setDeleted();
   }
 
+  detailPropertyChanged(args) {
+    // autofill UnitPrice based on selected Product
+    if (args.propertyName !== 'ProductID') {
+      return;
+    }
+    var product = this.productsIndex[args.newValue];
+    this.detail.UnitPrice = product ? product.UnitPrice : null;
+  }
+
   openDetail() {
+    this._subscription = this.detail.entityAspect.propertyChanged.subscribe(args => this.detailPropertyChanged(args));
     $('#detail').openModal();
   }
 
   closeDetail() {
+    this.detail.entityAspect.propertyChanged.unsubscribe(this._subscription);
     $('#detail').closeModal();
   }
 
@@ -46,5 +57,25 @@ export class OrderDetails {
 
   get totalCost() {
     return this.order.OrderDetails.map(this.calculateCost).reduce((a, b) => a + b, 0);
+  }
+}
+
+/**
+* Value converter for the "discount" field to allow users to enter discounts as whole numbers
+* even though they are stored as decimals.
+*/
+export class DiscountValueConverter {
+  toView(value) {
+    return value === null ? null : Math.floor(value * 100);
+  }
+
+  fromView(value) {
+    value = +value;
+
+    if (isNaN(value) || value >= 100) {
+      return 0;
+    }
+
+    return (value / 100).toFixed(2);
   }
 }

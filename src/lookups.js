@@ -7,7 +7,7 @@ var customersQuery = new breeze.EntityQuery
 
 var productsQuery = new breeze.EntityQuery
   .from('Products')
-  .select('ProductID, ProductName')
+  .select('ProductID, ProductName, UnitPrice')
   .orderBy('ProductName');
 
 /**

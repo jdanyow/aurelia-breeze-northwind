@@ -24,7 +24,7 @@
         <td click.delegate="$parent.removeDetail(detail)">
           <i class="mdi-navigation-close red-text darken-4" />
         </td>
-        <td>${$parent.productsIndex[detail.ProductID]}</td>
+        <td>${$parent.productsIndex[detail.ProductID].ProductName}</td>
         <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
         <td>${detail.Quantity | numberFormat:'0,0'}</td>
         <td>${detail.Discount | numberFormat:'0%'}</td>
@@ -44,26 +44,30 @@
     <div class="modal-content">
       <h4>Order Detail</h4>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s8">
           <select value.bind="detail.ProductID" id="Product" class="browser-default">
             <option model.bind="0">Select a product</option>
             <option repeat.for="product of products" model.bind="product.ProductID">${product.ProductName}</option>
           </select>
           <label for="Product" class="active">Product</label>
         </div>
+        <div class="col s4">
+          <br/>
+          Unit Price: ${detail.UnitPrice | numberFormat:'$0,0.00'}
+        </div>
       </div>
       <div class="row">
-        <div class="input-field col s4">
-          <input id="UnitPrice" type="number" value.bind="detail.UnitPrice">
-          <label for="UnitPrice" class="active">Unit Price</label>
-        </div>
         <div class="input-field col s4">
           <input id="Quantity" type="number" value.bind="detail.Quantity">
           <label for="Quantity" class="active">Quantity</label>
         </div>
         <div class="input-field col s4">
-          <input id="Discount" type="number" value.bind="detail.Discount">
-          <label for="Discount" class="active">Discount</label>
+          <input id="Discount" type="number" value.bind="detail.Discount | discount">
+          <label for="Discount" class="active">Discount %</label>
+        </div>
+        <div class="col s4">
+          <br/>
+          Total: ${detail.Quantity * detail.UnitPrice * (1 - detail.Discount) | numberFormat:'$0,0.00'}
         </div>
       </div>
     </div>

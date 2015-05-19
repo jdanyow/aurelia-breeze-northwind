@@ -13,7 +13,7 @@ export class Order extends EntityViewModel {
   }
 
   get title() {
-    if (this.entity.entityAspect.entityState.isAdded()) {
+    if (this.entity.OrderID <= 0) {
       return 'New Order';
     }
     return `Order #${this.entity.OrderID}`;
