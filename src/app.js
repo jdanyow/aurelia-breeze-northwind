@@ -7,8 +7,8 @@ export class App {
   constructor(lookups, events) {
     this.lookups = lookups;
 
-    // enable the materialize "waves" effect.
-    events.subscribe('router:navigation:complete', () => Waves.displayEffect());
+    // subscribe to the router's navigation complete event.
+    events.subscribe('router:navigation:complete', this.navigationComplete);
   }
 
   configureRouter(config, router) {
@@ -24,5 +24,13 @@ export class App {
 
   activate() {
     return this.lookups.load();
+  }
+
+  navigationComplete(navigationInstruction) {
+    // Enable the materialize "waves" effect on the new page.
+    Waves.displayEffect()
+
+    // Track page-views with google-analytics.
+    ga('send', 'pageview', '/' + navigationInstruction.fragment);
   }
 }
