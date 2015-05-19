@@ -2,12 +2,13 @@ import breeze from 'breeze';
 import settings from '../settings';
 import {createEntityManager} from '../entity-manager-factory';
 
-export class OrderService {
+export class EmployeeService {
   getPage(pageIndex) {
     var query = new breeze.EntityQuery
-      .from('Orders')
-      .select('OrderID, Customer.CompanyName, Employee.FirstName, Employee.LastName, OrderDate, Freight')
-      .orderByDesc('OrderDate')
+      .from('Employees')
+      .select('EmployeeID, FirstName, LastName, Title, HireDate, HomePhone, Extension')
+
+      .orderBy('LastName')
       .skip(pageIndex * settings.pageSize)
       .take(settings.pageSize)
       .inlineCount();
@@ -17,19 +18,17 @@ export class OrderService {
       .then(queryResult => {
         return {
           entities: queryResult.results,
-          pageCount: 8, //Math.ceil(queryResult.inlineCount / this.pageSize);
+          pageCount: 1, //Math.ceil(queryResult.inlineCount / this.pageSize);
         };
       });
   }
 
   loadExisting(id) {
-    var orderQuery = new breeze.EntityQuery().from('Orders').where('OrderID', '==', id),
-        detailQuery = new breeze.EntityQuery().from('OrderDetails').where('OrderID', '==', id);
+    var employeeQuery = new breeze.EntityQuery().from('Employees').where('EmployeeID', '==', id);
 
     return createEntityManager()
-      .then(em => Promise.all([em.executeQuery(orderQuery), em.executeQuery(detailQuery)]))
-      .then(values => {
-        var queryResult = values[0];
+      .then(em => em.executeQuery(employeeQuery))
+      .then(queryResult => {
         return {
           entity: queryResult.results[0],
           entityManager: queryResult.entityManager
@@ -41,7 +40,7 @@ export class OrderService {
     return createEntityManager()
       .then(em => {
         return {
-          entity: em.createEntity('Order'),
+          entity: em.createEntity('Employee'),
           entityManager: em
         };
       });

@@ -10,6 +10,10 @@ var productsQuery = new breeze.EntityQuery
   .select('ProductID, ProductName')
   .orderBy('ProductName');
 
+/**
+* Manages the application's shared lookups.
+* Eagerly loading the lookups because there are only two.
+*/
 export class Lookups {
   customers;
   products;

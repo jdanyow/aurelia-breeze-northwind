@@ -4,7 +4,7 @@ System.register([], function (_export) {
   _export('configure', configure);
 
   function configure(aurelia) {
-    aurelia.globalizeResources('./date-format', './number-format', './materialize');
+    aurelia.globalizeResources('./date-format', './number-format', './materialize', './pager');
   }
 
   return {
@@ -12,4 +12,4 @@ System.register([], function (_export) {
     execute: function () {}
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7dUJBQWdCLFNBQVM7O0FBQWxCLFdBQVMsU0FBUyxDQUFDLE9BQU8sRUFBRTtBQUNqQyxXQUFPLENBQUMsa0JBQWtCLENBQUMsZUFBZSxFQUFFLGlCQUFpQixFQUFFLGVBQWUsQ0FBQyxDQUFDO0dBQ2pGIiwiZmlsZSI6InJlc291cmNlcy9pbmRleC5qcyIsInNvdXJjZVJvb3QiOiIuLi9zcmMvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7dUJBQWdCLFNBQVM7O0FBQWxCLFdBQVMsU0FBUyxDQUFDLE9BQU8sRUFBRTtBQUNqQyxXQUFPLENBQUMsa0JBQWtCLENBQUMsZUFBZSxFQUFFLGlCQUFpQixFQUFFLGVBQWUsRUFBRSxTQUFTLENBQUMsQ0FBQztHQUM1RiIsImZpbGUiOiJyZXNvdXJjZXMvaW5kZXguanMiLCJzb3VyY2VSb290IjoiLi4vc3JjLyJ9

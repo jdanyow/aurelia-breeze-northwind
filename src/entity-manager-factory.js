@@ -2,6 +2,9 @@ import settings from './settings';
 
 var entityManager;
 
+/**
+* Creates Breeze EntityManager instances.
+*/
 export function createEntityManager() {
   if (entityManager) {
     return new Promise((resolve, reject) => resolve(copyEntityManager()));
@@ -18,8 +21,8 @@ function copyEntityManager() {
   return copy;
 }
 
+// log entity changes to the console for debugging purposes.
 function logChanges(data) {
-  // log the entity change to the console for debugging purposes.
   var message = 'Entity Changed.  Entity: ' + (data.entity ? data.entity.entityType.name + '/' + data.entity.entityAspect.getKey().toString() : '?') + ';  EntityAction: ' + data.entityAction.getName() + '; ';
   if (data.entityAction === breeze.EntityAction.PropertyChange) {
     var pcArgs = data.args;

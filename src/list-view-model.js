@@ -1,20 +1,17 @@
-import {inject, singleton} from 'aurelia-dependency-injection';
-import {AppRouter} from 'aurelia-router';
-import {OrderService} from './order-service';
 import settings from '../settings';
 
-@inject(AppRouter, OrderService)
-@singleton()
-export class OrdersList {
+export class ListViewModel {
   router;
+  route;
   service;
-  orders = [];
+  entities = [];
   pageSize = settings.pageSize;
   pageCount = 0;
   pageIndex = 0;
   isLoading = false;
 
-  constructor(router, service) {
+  constructor(route, router, service) {
+    this.route = route;
     this.router = router;
     this.service = service;
   }
@@ -27,7 +24,7 @@ export class OrdersList {
     this.isLoading = true;
     this.service.getPage(this.pageIndex)
       .then(result => {
-        this.orders = result.orders;
+        this.entities = result.entities;
         this.pageCount = result.pageCount;
         this.isLoading = false;
       });
@@ -38,11 +35,7 @@ export class OrdersList {
     this.load();
   }
 
-  openOrder(order) {
-    this.router.navigate('orders/' + order.OrderID);
-  }
-
-  addOrder() {
-    this.router.navigate('orders/new');
+  open(id) {
+    this.router.navigate(this.route + '/' + id);
   }
 }
