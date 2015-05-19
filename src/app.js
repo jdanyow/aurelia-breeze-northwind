@@ -1,10 +1,14 @@
 import {inject} from './aurelia-dependency-injection';
 import {Lookups} from './lookups';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
-@inject(Lookups)
+@inject(Lookups, EventAggregator)
 export class App {
-  constructor(lookups) {
+  constructor(lookups, events) {
     this.lookups = lookups;
+
+    // enable the materialize "waves" effect.
+    events.subscribe('router:navigation:complete', () => Waves.displayEffect());
   }
 
   configureRouter(config, router) {

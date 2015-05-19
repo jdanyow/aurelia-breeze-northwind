@@ -33,9 +33,11 @@ export class Order {
 
   canDeactivate() {
     if (this.hasChanges) {
-      // use a timeout to throttle the amount of toast we pop.
-      clearTimeout(this._toastTimeout);
-      this._toastTimeout = setTimeout(() => Materialize.toast('Navigation cancelled.  Save your changes!', 2000), 50);
+      // throttle the amount of toast we pop.
+      if (!this._lastPop || +new Date() - this._lastPop > 2000) {
+        this._lastPop = +new Date();
+        Materialize.toast('Navigation cancelled.  Save your changes!', 2000);
+      }
 
       // cancel navigation.
       return false;

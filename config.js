@@ -20,6 +20,7 @@ System.config({
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.12.0",
     "aurelia-breeze": "github:jdanyow/aurelia-breeze@0.5.2",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.7.1",
+    "aurelia-event-aggregator": "github:aurelia/event-aggregator@0.4.0",
     "aurelia-framework": "github:aurelia/framework@0.11.0",
     "aurelia-router": "github:aurelia/router@0.8.1",
     "aurelia-task-queue": "github:aurelia/task-queue@0.4.0",
