@@ -32,18 +32,23 @@ export class Order {
   }
 
   canDeactivate() {
+    // permit navigating away from new entities.
+    if (this.order.entityAspect.entityState.isAdded()) {
+      Materialize.toast('Add-new cancelled.', 2000);
+      return true;
+    }
+
+    // disallow navigating away from modified entities.
     if (this.hasChanges) {
       // throttle the amount of toast we pop.
       if (!this._lastPop || +new Date() - this._lastPop > 2000) {
         this._lastPop = +new Date();
         Materialize.toast('Navigation cancelled.  Save your changes!', 2000);
       }
-
-      // cancel navigation.
       return false;
     }
 
-    // permit navigation.
+    // permit navigating away from unmodified entities.
     return true;
   }
 
