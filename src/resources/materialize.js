@@ -63,7 +63,7 @@ export class Materialize {
 
   fixLabelOverlap() {
     var $el = $(this.element);
-    if ($el.prevUntil(null, 'input').val().length) {
+    if ($el.prevUntil(null, ':input').val().length) {
       $el.addClass('active');
     }
   }

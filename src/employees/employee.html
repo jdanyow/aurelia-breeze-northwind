@@ -2,11 +2,11 @@
   <div class="container">
     <form submit.delegate="save()" novalidate>
       <!-- header -->
-      <!-- <div class="row">
-        <h3 class="left">Order ${order.OrderID < 0 ? '(new)' : '#' + order.OrderID}</h3>
+      <div class="row">
+        <h3 class="left">Employee ${entity.EmployeeID < 0 ? '(new)' : '#' + entity.EmployeeID}</h3>
         <button type="button" class="right waves-effect waves-light btn header-button"
                 disabled.one-way="!hasChanges"
-                show.bind="!order.entityAspect.entityState.isAdded()"
+                show.bind="!entity.entityAspect.entityState.isAdded()"
                 click.delegate="revert()">
           Revert
         </button>
@@ -14,61 +14,74 @@
                 disabled.one-way="!hasChanges">
           Save
         </button>
-      </div> -->
+      </div>
 
-      <!-- order fields -->
-      <!-- <div class="row">
-        <div class="input-field col s12 m6">
-          <select value.bind="order.CustomerID" materialize="select">
-            <option value="">Select a customer</option>
-            <option repeat.for="customer of customers" value.bind="customer.CustomerID">${customer.CompanyName}</option>
-          </select>
-          <label for="Customer">Customer</label>
-        </div>
-        <div class="input-field col s12 m3">
-          <input id="OrderDate" type="text" materialize="datepicker" value.bind="order.OrderDate | dateFormat:'M/D/YYYY'">
-          <label for="OrderDate" materialize>Order Date</label>
-        </div>
-        <div class="input-field col s12 m3">
-          <input id="ShippedDate" type="text" materialize="datepicker" value.bind="order.ShippedDate | dateFormat:'M/D/YYYY'">
-          <label for="ShippedDate" materialize>Shipped Date</label>
-        </div>
-      </div> -->
-
-      <!-- order shipping fields -->
-      <!-- <h4>Shipping</h4>
       <div class="row">
-        <div class="input-field col s12 m5">
-          <input id="ShipName" type="text" value.bind="order.ShipName">
-          <label for="ShipName" materialize>Name</label>
+        <div class="col s12 m2">
+          <img src.one-time="photo" class="responsive-img circle"></img>
         </div>
-        <div class="input-field col s12 m5">
-          <input id="ShipCountry" type="text" value.bind="order.ShipCountry">
-          <label for="ShipCountry" materialize>Country</label>
-        </div>
-        <div class="input-field col s12 m2">
-          <input id="Freight" type="number" value.bind="order.Freight">
-          <label for="Freight" materialize>Freight</label>
+        <div class="col s12 m10">
+          <div class="row">
+            <div class="input-field col s12 m4">
+              <input id="LastName" type="text" value.bind="entity.LastName">
+              <label for="LastName" materialize>Last Name</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="FirstName" type="text" value.bind="entity.FirstName">
+              <label for="FirstName" materialize>First Name</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="Title" type="text" value.bind="entity.Title">
+              <label for="Title" materialize>Title</label>
+            </div>
+          </row>
+          <row>
+            <div class="input-field col s12 m3">
+              <input id="HireDate" type="text" materialize="datepicker" value.bind="entity.HireDate | dateFormat:'M/D/YYYY'">
+              <label for="HireDate" materialize>Hire Date</label>
+            </div>
+            <div class="input-field col s12 m2">
+              <input id="Extension" type="text" value.bind="entity.Extension">
+              <label for="Extension" materialize>Extension</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="HomePhone" type="text" value.bind="entity.HomePhone">
+              <label for="HomePhone" materialize>Home Phone</label>
+            </div>
+            <div class="input-field col s12 m3">
+              <input id="BirthDate" type="text" materialize="datepicker" value.bind="entity.BirthDate | dateFormat:'M/D/YYYY'">
+              <label for="BirthDate" materialize>Birth Date</label>
+            </div>
+          </div>
         </div>
       </div>
+
+      <h4>Address</h4>
       <div class="row">
         <div class="input-field col s12 m4">
-          <input id="ShipAddress" type="text" value.bind="order.ShipAddress">
-          <label for="ShipAddress" materialize>Address</label>
+          <input id="Address" type="text" value.bind="entity.Address">
+          <label for="Address" materialize>Address</label>
         </div>
         <div class="input-field col s12 m4">
-          <input id="ShipCity" type="text" value.bind="order.ShipCity">
-          <label for="ShipCity" materialize>City</label>
+          <input id="City" type="text" value.bind="entity.City">
+          <label for="City" materialize>City</label>
         </div>
         <div class="input-field col s12 m2">
-          <input id="ShipRegion" type="text" value.bind="order.ShipRegion">
-          <label for="ShipRegion" materialize>Region</label>
+          <input id="Region" type="text" value.bind="entity.Region">
+          <label for="Region" materialize>Region</label>
         </div>
         <div class="input-field col s12 m2">
-          <input id="ShipPostalCode" type="tel" value.bind="order.ShipPostalCode">
-          <label for="ShipPostalCode" materialize>Postal Code</label>
+          <input id="PostalCode" type="tel" value.bind="entity.PostalCode">
+          <label for="PostalCode" materialize>Postal Code</label>
         </div>
-      </div> -->
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="Notes" class="materialize-textarea" value.bind="entity.Notes"></textarea>
+          <label for="Notes">Notes</label>
+        </div>
+      </div>
     </form>
   </div>
 </template>
