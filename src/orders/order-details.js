@@ -51,12 +51,12 @@ export class OrderDetails {
     $('#detail').closeModal();
   }
 
-  calculateCost(detail) {
+  calculateDetailCost(detail) {
     return detail.Quantity * detail.UnitPrice * (1 - detail.Discount);
   }
 
-  get totalCost() {
-    return this.order.OrderDetails.map(this.calculateCost).reduce((a, b) => a + b, 0);
+  get detailTotal() {
+    return this.order.OrderDetails.map(this.calculateDetailCost).reduce((a, b) => a + b, 0);
   }
 }
 

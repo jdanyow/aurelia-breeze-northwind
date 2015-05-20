@@ -33,8 +33,19 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5"></td>
-        <td><strong>${totalCost | numberFormat:'$0,0.00'}</strong></td>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Subtotal:</strong></td>
+        <td>${detailTotal | numberFormat:'$0,0.00'}</td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Freight:</strong></td>
+        <td>${order.Freight | numberFormat:'$0,0.00'}</td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Total:</strong></td>
+        <td><strong>${detailTotal + order.Freight | numberFormat:'$0,0.00'}</strong></td>
       </tr>
     <tfoot>
   </table>
