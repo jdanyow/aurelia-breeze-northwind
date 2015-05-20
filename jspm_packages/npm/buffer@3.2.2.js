@@ -1,1 +1,0 @@
-module.exports = require("npm:buffer@3.2.2/index");

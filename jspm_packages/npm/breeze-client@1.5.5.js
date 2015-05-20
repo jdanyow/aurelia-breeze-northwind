@@ -1,1 +1,0 @@
-module.exports = require("npm:breeze-client@1.5.5/breeze.debug");
