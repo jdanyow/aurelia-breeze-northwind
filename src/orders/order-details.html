@@ -56,11 +56,11 @@
       <h4>Order Detail</h4>
       <div class="row">
         <div class="input-field col s8">
-          <select value.bind="detail.ProductID" id="Product" class="browser-default">
+          <select value.bind="detail.ProductID" id="Product" materialize="select">
             <option model.bind="0">Select a product</option>
             <option repeat.for="product of products" model.bind="product.ProductID">${product.ProductName}</option>
           </select>
-          <label for="Product" class="active">Product</label>
+          <label for="Product">Product</label>
         </div>
         <div class="col s4">
           <br/>

@@ -41,7 +41,7 @@ export class Materialize {
         break;
 
       case 'select':
-        setTimeout(() => $(this.element).material_select(), 10);
+        setTimeout(() => this.bindSelect(), 10);
         break;
 
       case 'sidenav':
@@ -58,7 +58,7 @@ export class Materialize {
   }
 
   detached() {
-    // todo: destroy
+    clearInterval(this._interval);
   }
 
   fixLabelOverlap() {
@@ -66,5 +66,53 @@ export class Materialize {
     if ($el.prevUntil(null, ':input').val().length) {
       $el.addClass('active');
     }
+  }
+
+  bindSelect() {
+    // Some hacky code to make the materialize select work with data-binding for the demo.
+    // A better approach would be to create a custom element that uses the same styling
+    // but is a complete re-write of this control.
+    var input, getSelectedOption, selectedOption, lastSelectValue;
+
+    // "materialize" the select and find the resulting input that replaces the select element.
+    $(this.element).material_select();
+    input = $(this.element).prevUntil(null, ':input')[0];
+
+    // get the select element's selected option element.
+    getSelectedOption = () => {
+      var i, options, option, optionValue;
+      options = this.element.options;
+      i = options.length;
+      while(i--) {
+        option = options.item(i);
+        if (option.selected) {
+          return option;
+        }
+      }
+      throw new Error('should have found a selected option');
+    };
+
+    // sync the input with the select element.
+    selectedOption = getSelectedOption();
+    input.value = selectedOption.text;
+
+    // squirrel away the select element's value for dirty-checking purposes.
+    lastSelectValue = this.element.value;
+
+    // dirrrrrty checking.
+    this._interval = setInterval(() => {
+        if (lastSelectValue !== this.element.value) {
+          selectedOption = getSelectedOption();
+          if (input.value === selectedOption.text) {
+            // materialize changed the select's value.  notify the binding system.
+            fireEvent(this.element, 'change');
+          } else {
+            // the binding system updated the select's value.  synchronize the materialize input.
+            input.value = selectedOption.text;
+          }
+          lastSelectValue = this.element.value;
+        }
+      },
+      120);
   }
 }
