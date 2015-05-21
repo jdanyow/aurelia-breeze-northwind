@@ -59,6 +59,10 @@ export class Materialize {
 
   detached() {
     clearInterval(this._interval);
+    if (this.domObserver) {
+      this.domObserver.disconnect();
+      this.domObserver = null;
+    }
   }
 
   fixLabelOverlap() {
@@ -114,5 +118,13 @@ export class Materialize {
         }
       },
       120);
+
+    // handle option changes
+    this.domObserver = new MutationObserver(() => {
+      this.detached();
+      $(this.element).material_select('destroy');
+      this.bindSelect();
+    });
+    this.domObserver.observe(this.element, { childList: true, subtree: true });
   }
 }

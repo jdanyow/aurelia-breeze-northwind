@@ -4,12 +4,13 @@ import {Lookups} from '../lookups';
 @inject(Lookups)
 export class OrderDetails {
   order;
+  allProducts;
   products;
   productsIndex = {};
   detail = null;
 
   constructor(lookups) {
-    this.products = lookups.products;
+    this.products = this.allProducts = lookups.products;
     this.products.forEach(p => this.productsIndex[p.ProductID] = p);
   }
 
@@ -42,7 +43,14 @@ export class OrderDetails {
   }
 
   openDetail() {
+    // subscribe to Product change to autofill UnitPrice
     this._subscription = this.detail.entityAspect.propertyChanged.subscribe(args => this.detailPropertyChanged(args));
+
+    // prevent selecting the same product twice.
+    this.products = this.allProducts
+      .filter(p => this.order.OrderDetails.filter(d => d.ProductID === p.ProductID && d !== this.detail).length === 0);
+
+    // open the modal.
     $('#detail').openModal();
   }
 
