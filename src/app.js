@@ -18,6 +18,7 @@ export class App {
       { route: 'orders',    moduleId: './orders/orders-section',       nav: true, title: 'Orders' },
       { route: 'customers', moduleId: './customers/customers-section', nav: true, title: 'Customers' },
       { route: 'employees', moduleId: './employees/employees-section', nav: true, title: 'Employees' },
+      { route: 'about',     moduleId: './about',                       nav: true, title: 'About' },
     ]);
     this.router = router;
   }

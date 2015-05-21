@@ -7,16 +7,10 @@
         <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
           <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
         </li>
-        <li>
-          <a href="https://github.com/jdanyow/aurelia-breeze-northwind" target="_blank" class="waves-effect waves-light">About</a>
-        </li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
           <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
-        </li>
-        <li>
-          <a href="https://github.com/jdanyow/aurelia-breeze-northwind" target="_blank" class="waves-effect waves-light">About</a>
         </li>
       </ul>
     </div>
