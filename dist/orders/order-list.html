@@ -1,0 +1,38 @@
+<template>
+  <div class="container">
+
+    <h3 class="left">Orders</h3>
+    <a href="#orders/new" class="waves-effect waves-light btn right header-button">New</a>
+
+    <table class="bordered hoverable table-responsive">
+      <thead>
+        <tr>
+          <th>Order #</th>
+          <th>Date</th>
+          <th>Freight</th>
+          <th>Customer</th>
+          <th>Employee</th>
+        </tr>
+      </thead>
+      <tbody class="cursor-pointer">
+        <tr repeat.for="entity of entities" click.delegate="$parent.open(entity.OrderID)">
+          <td>${entity.OrderID}</td>
+          <td>${entity.OrderDate | dateFormat:'M/D/YYYY'}</td>
+          <td>${entity.Freight | numberFormat:'$0,0.00'}</td>
+          <td>${entity.Customer_CompanyName}</td>
+          <td>${entity.Employee_FirstName + ' ' + entity.Employee_LastName}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="progress" show.bind="isLoading">
+      <div class="indeterminate"></div>
+    </div>
+
+    <pager page-count.bind="pageCount"
+           page-index.bind="pageIndex"
+           set-page.call="setPage($event)">
+    </pager>
+
+  </div>
+</template>

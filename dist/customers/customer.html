@@ -1,0 +1,54 @@
+<template>
+  <div class="container">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
+      <compose view="../entity-header.html"></compose>
+
+      <!-- customer fields -->
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input id="CompanyName" type="text" value.bind="entity.CompanyName">
+          <label for="CompanyName" materialize>Company Name</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="ContactName" type="text" value.bind="entity.ContactName">
+          <label for="ContactName" materialize>Contact Name</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="ContactTitle" type="text" value.bind="entity.ContactTitle">
+          <label for="ContactTitle" materialize>Contact Title</label>
+        </div>
+      </row>
+      <row>
+        <div class="input-field col s12 m3">
+          <input id="Phone" type="text" value.bind="entity.Phone">
+          <label for="Phone" materialize>Phone</label>
+        </div>
+        <div class="input-field col s12 m3">
+          <input id="Fax" type="text" value.bind="entity.Fax">
+          <label for="Fax" materialize>Fax</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <h4>Address</h4>
+        <div class="input-field col s12 m4">
+          <input id="Address" type="text" value.bind="entity.Address">
+          <label for="Address" materialize>Address</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="City" type="text" value.bind="entity.City">
+          <label for="City" materialize>City</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="Region" type="text" value.bind="entity.Region">
+          <label for="Region" materialize>Region</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="PostalCode" type="tel" value.bind="entity.PostalCode">
+          <label for="PostalCode" materialize>Postal Code</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>

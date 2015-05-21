@@ -1,0 +1,28 @@
+<template>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo waves-effect waves-light">&nbsp;${router.title}</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" materialize="sidenav"><i class="mdi-navigation-menu"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
+          <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
+        </li>
+        <li>
+          <a href="https://github.com/jdanyow/aurelia-breeze-northwind" target="_blank" class="waves-effect waves-light">About</a>
+        </li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
+          <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
+        </li>
+        <li>
+          <a href="https://github.com/jdanyow/aurelia-breeze-northwind" target="_blank" class="waves-effect waves-light">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-host">
+    <router-view></router-view>
+  </div>
+</template>

@@ -1,0 +1,77 @@
+<template>
+  <div class="container">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
+      <compose view="../entity-header.html"></compose>
+
+      <!-- employee fields -->
+      <div class="row">
+        <div class="col s12 m10">
+          <div class="row">
+            <div class="input-field col s12 m4">
+              <input id="FirstName" type="text" value.bind="entity.FirstName">
+              <label for="FirstName" materialize>First Name</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="LastName" type="text" value.bind="entity.LastName">
+              <label for="LastName" materialize>Last Name</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="Title" type="text" value.bind="entity.Title">
+              <label for="Title" materialize>Title</label>
+            </div>
+          </row>
+          <row>
+            <div class="input-field col s12 m3">
+              <input id="HireDate" type="text" materialize="datepicker" value.bind="entity.HireDate | dateFormat:'M/D/YYYY'">
+              <label for="HireDate" materialize>Hire Date</label>
+            </div>
+            <div class="input-field col s12 m2">
+              <input id="Extension" type="text" value.bind="entity.Extension">
+              <label for="Extension" materialize>Extension</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="HomePhone" type="text" value.bind="entity.HomePhone">
+              <label for="HomePhone" materialize>Home Phone</label>
+            </div>
+            <div class="input-field col s12 m3">
+              <input id="BirthDate" type="text" materialize="datepicker" value.bind="entity.BirthDate | dateFormat:'M/D/YYYY'">
+              <label for="BirthDate" materialize>Birth Date</label>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m2">
+          <img src.one-time="photo" class="responsive-img circle"></img>
+        </div>
+      </div>
+
+      <div class="row">
+        <h4>Address</h4>
+        <div class="input-field col s12 m4">
+          <input id="Address" type="text" value.bind="entity.Address">
+          <label for="Address" materialize>Address</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="City" type="text" value.bind="entity.City">
+          <label for="City" materialize>City</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="Region" type="text" value.bind="entity.Region">
+          <label for="Region" materialize>Region</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="PostalCode" type="tel" value.bind="entity.PostalCode">
+          <label for="PostalCode" materialize>Postal Code</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <h4>Notes</h4>
+        <div class="input-field col s12">
+          <textarea id="Notes" class="materialize-textarea" value.bind="entity.Notes"></textarea>
+          <label for="Notes" class="active">Notes</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>

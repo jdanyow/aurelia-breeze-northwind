@@ -1,0 +1,65 @@
+<template>
+  <div class="container">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
+      <compose view="../entity-header.html"></compose>
+
+      <!-- order fields -->
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <select value.bind="entity.CustomerID" materialize="select">
+            <option value="">Select a customer</option>
+            <option repeat.for="customer of customers" value.bind="customer.CustomerID">${customer.CompanyName}</option>
+          </select>
+          <label for="Customer">Customer</label>
+        </div>
+        <div class="input-field col s12 m3">
+          <input id="OrderDate" type="text" materialize="datepicker" value.bind="entity.OrderDate | dateFormat:'M/D/YYYY'">
+          <label for="OrderDate" materialize>Order Date</label>
+        </div>
+        <div class="input-field col s12 m3">
+          <input id="ShippedDate" type="text" materialize="datepicker" value.bind="entity.ShippedDate | dateFormat:'M/D/YYYY'">
+          <label for="ShippedDate" materialize>Shipped Date</label>
+        </div>
+      </div>
+
+      <!-- order shipping fields -->
+      <div class="row">
+        <h4>Shipping</h4>
+        <div class="input-field col s12 m5">
+          <input id="ShipName" type="text" value.bind="entity.ShipName">
+          <label for="ShipName" materialize>Name</label>
+        </div>
+        <div class="input-field col s12 m5">
+          <input id="ShipCountry" type="text" value.bind="entity.ShipCountry">
+          <label for="ShipCountry" materialize>Country</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="Freight" type="number" value.bind="entity.Freight">
+          <label for="Freight" materialize>Freight $</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input id="ShipAddress" type="text" value.bind="entity.ShipAddress">
+          <label for="ShipAddress" materialize>Address</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="ShipCity" type="text" value.bind="entity.ShipCity">
+          <label for="ShipCity" materialize>City</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="ShipRegion" type="text" value.bind="entity.ShipRegion">
+          <label for="ShipRegion" materialize>Region</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <input id="ShipPostalCode" type="tel" value.bind="entity.ShipPostalCode">
+          <label for="ShipPostalCode" materialize>Postal Code</label>
+        </div>
+      </div>
+
+      <!-- order details grid -->
+      <compose model.bind="entity" view-model="orders/order-details"></compose>
+    </form>
+  </div>
+</template>

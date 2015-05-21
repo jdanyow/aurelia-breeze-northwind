@@ -1,0 +1,89 @@
+<template>
+  <!-- header -->
+  <div class="row">
+    <h4 class="left">Items</h4>
+    <button type="button" click.delegate="addDetail()" class="right waves-effect waves-light btn header-button">
+      Add
+    </button>
+  </div>
+
+  <!-- grid -->
+  <table class="bordered hoverable table-responsive">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody class="cursor-pointer">
+      <tr repeat.for="detail of order.OrderDetails" click.delegate="$parent.editDetail(detail)">
+        <td click.delegate="$parent.removeDetail(detail)">
+          <i class="mdi-navigation-close red-text darken-4" />
+        </td>
+        <td>${$parent.productsIndex[detail.ProductID].ProductName}</td>
+        <td>${detail.UnitPrice | numberFormat:'$0,0.00'}</td>
+        <td>${detail.Quantity | numberFormat:'0,0'}</td>
+        <td>${detail.Discount | numberFormat:'0%'}</td>
+        <td>${detail.Quantity * detail.UnitPrice * (1 - detail.Discount) | numberFormat:'$0,0.00'}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Subtotal:</strong></td>
+        <td>${detailTotal | numberFormat:'$0,0.00'}</td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Freight:</strong></td>
+        <td>${order.Freight | numberFormat:'$0,0.00'}</td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td><strong class="right-align">Total:</strong></td>
+        <td><strong>${detailTotal + order.Freight | numberFormat:'$0,0.00'}</strong></td>
+      </tr>
+    <tfoot>
+  </table>
+
+  <!-- modal -->
+  <div id="detail" class="modal">
+    <div class="modal-content">
+      <h4>Order Detail</h4>
+      <div class="row">
+        <div class="input-field col s8">
+          <select value.bind="detail.ProductID" id="Product" materialize="select">
+            <option model.bind="0">Select a product</option>
+            <option repeat.for="product of products" model.bind="product.ProductID">${product.ProductName}</option>
+          </select>
+          <label for="Product">Product</label>
+        </div>
+        <div class="col s4">
+          <br/>
+          Unit Price: ${detail.UnitPrice | numberFormat:'$0,0.00'}
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="Quantity" type="number" value.bind="detail.Quantity">
+          <label for="Quantity" class="active">Quantity</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="Discount" type="number" value.bind="detail.Discount | discount">
+          <label for="Discount" class="active">Discount %</label>
+        </div>
+        <div class="col s4">
+          <br/>
+          Total: ${detail.Quantity * detail.UnitPrice * (1 - detail.Discount) | numberFormat:'$0,0.00'}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" click.delegate="closeDetail" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+  </div>
+</template>
