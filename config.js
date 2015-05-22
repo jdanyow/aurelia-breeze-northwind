@@ -276,7 +276,8 @@ System.config({
       "lookups",
       "list-view-model",
       "entity-view-model",
-      "app"
+      "app",
+      "about"
     ]
   }
 });
