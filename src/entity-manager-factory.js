@@ -7,7 +7,7 @@ var entityManager;
 */
 export function createEntityManager() {
   if (entityManager) {
-    return new Promise((resolve, reject) => resolve(copyEntityManager()));
+    return Promise.resolve(copyEntityManager()); 
   }
 
   entityManager = new breeze.EntityManager(settings.serviceName);
