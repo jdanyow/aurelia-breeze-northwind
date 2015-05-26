@@ -1,4 +1,4 @@
-import materialize from 'materialize/dist/js/materialize'; // ensure the materialize jquery plugins are installed.
+import materialize from 'materialize'; // ensure the materialize jquery plugins are installed.
 
 export function configure(aurelia) {
   aurelia.use
