@@ -29,7 +29,7 @@ System.config({
     "breeze": "npm:breeze-client@1.5.5",
     "core-js": "npm:core-js@0.9.15",
     "css": "github:systemjs/plugin-css@0.1.10",
-    "materialize": "github:dogfalo/materialize@0.96.1",
+    "materialize": "github:Dogfalo/materialize@0.96.1",
     "moment": "github:moment/moment@2.10.3",
     "numeral": "npm:numeral@1.5.3",
     "github:aurelia/binding@0.7.1": {
@@ -134,7 +134,7 @@ System.config({
       "aurelia-task-queue": "github:aurelia/task-queue@0.5.0",
       "core-js": "npm:core-js@0.9.15"
     },
-    "github:dogfalo/materialize@0.96.1": {
+    "github:Dogfalo/materialize@0.96.1": {
       "css": "github:systemjs/plugin-css@0.1.10",
       "jquery": "github:components/jquery@2.1.4"
     },
