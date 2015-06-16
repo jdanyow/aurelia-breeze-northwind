@@ -55,7 +55,7 @@
       "aurelia-task-queue": "github:aurelia/task-queue@^0.5.0",
       "breeze": "npm:breeze-client@^1.5.5",
       "css": "github:systemjs/plugin-css@^0.1.9",
-      "materialize": "github:dogfalo/materialize@^0.96.1",
+      "materialize": "github:Dogfalo/materialize@^0.96.1",
       "moment": "github:moment/moment@^2.10.3",
       "numeral": "npm:numeral@^1.5.3"
     },
