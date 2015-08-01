@@ -17,7 +17,7 @@ System.config({
 
 System.config({
   "map": {
-    "Dogfalo/materialize": "github:Dogfalo/materialize@0.96.1",
+    "Dogfalo/materialize": "github:Dogfalo/materialize@0.97.0",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.14.0",
     "aurelia-breeze": "github:jdanyow/aurelia-breeze@0.7.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.9.0",
@@ -32,7 +32,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.13",
     "moment": "github:moment/moment@2.10.3",
     "numeral": "npm:numeral@1.5.3",
-    "github:Dogfalo/materialize@0.96.1": {
+    "github:Dogfalo/materialize@0.97.0": {
       "css": "github:systemjs/plugin-css@0.1.13",
       "jquery": "github:components/jquery@2.1.4"
     },
