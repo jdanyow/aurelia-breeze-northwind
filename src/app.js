@@ -1,4 +1,4 @@
-import {inject} from './aurelia-dependency-injection';
+import {inject} from 'aurelia-dependency-injection';
 import {Lookups} from './lookups';
 import {EventAggregator} from 'aurelia-event-aggregator';
 

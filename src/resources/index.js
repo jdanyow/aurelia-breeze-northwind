@@ -1,3 +1,3 @@
 export function configure(aurelia) {
-  aurelia.globalizeResources('./date-format', './number-format', './materialize', './pager');
+  aurelia.globalResources('./date-format', './number-format', './materialize', './pager');
 }

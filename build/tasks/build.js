@@ -7,6 +7,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var paths = require('../paths');
 var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
+var notify = require("gulp-notify");
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -14,11 +15,11 @@ var assign = Object.assign || require('object.assign');
 // https://www.npmjs.com/package/gulp-plumber
 gulp.task('build-system', function () {
   return gulp.src(paths.source)
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
-    .pipe(sourcemaps.write({includeContent: true }))
+    .pipe(sourcemaps.write({includeContent: true}))
     .pipe(gulp.dest(paths.output));
 });
 
@@ -29,6 +30,13 @@ gulp.task('build-html', function () {
     .pipe(gulp.dest(paths.output));
 });
 
+// copies changed css files to the output directory
+gulp.task('build-css', function () {
+  return gulp.src(paths.css)
+    .pipe(changed(paths.output, {extension: '.css'}))
+    .pipe(gulp.dest(paths.output));
+});
+
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
 // and build-html tasks in parallel
@@ -36,7 +44,7 @@ gulp.task('build-html', function () {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html'],
+    ['build-system', 'build-html', 'build-css'],
     callback
   );
 });

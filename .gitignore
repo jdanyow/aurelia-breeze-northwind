@@ -1,6 +1,7 @@
-jspm_packages
 node_modules
-dist
+jspm_packages
 bower_components
 .idea
 .DS_STORE
+/dist
+build/reports

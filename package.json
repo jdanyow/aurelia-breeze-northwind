@@ -1,6 +1,6 @@
 {
   "name": "aurelia-breeze-northwind",
-  "version": "0.13.0",
+  "version": "1.0.0",
   "description": "An Aurelia app using Breeze.",
   "keywords": [
     "aurelia",
@@ -19,25 +19,29 @@
     "url": "https://github.com/jdanyow/aurelia-breeze-northwind/"
   },
   "devDependencies": {
+    "aurelia-bundler": "^0.1.6",
     "aurelia-tools": "^0.1.3",
     "browser-sync": "^1.8.1",
     "conventional-changelog": "0.0.11",
     "del": "^1.1.0",
     "gulp": "^3.8.10",
     "gulp-babel": "^5.1.0",
-    "gulp-bump": "^0.1.11",
+    "gulp-bump": "^0.3.1",
     "gulp-changed": "^1.1.0",
     "gulp-jshint": "^1.9.0",
+    "gulp-notify": "^2.2.0",
     "gulp-plumber": "^0.6.6",
+    "gulp-protractor": "^0.0.12",
     "gulp-sourcemaps": "^1.3.0",
     "gulp-yuidoc": "^0.1.2",
     "jasmine-core": "^2.1.3",
     "jshint-stylish": "^1.0.0",
     "karma": "^0.12.28",
-    "karma-babel-preprocessor": "^5.1.0",
+    "karma-babel-preprocessor": "^5.2.1",
     "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.3.1",
     "karma-jasmine": "^0.3.5",
-    "karma-jspm": "^1.1.4",
+    "karma-jspm": "2.0.1-beta.2",
     "object.assign": "^1.0.3",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
@@ -47,21 +51,21 @@
   "jspm": {
     "dependencies": {
       "Dogfalo/materialize": "github:Dogfalo/materialize@0.97.0",
-      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.14.0",
-      "aurelia-breeze": "github:jdanyow/aurelia-breeze@^0.7.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.9.0",
-      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.6.0",
-      "aurelia-framework": "github:aurelia/framework@^0.13.0",
-      "aurelia-router": "github:aurelia/router@^0.10.0",
-      "aurelia-task-queue": "github:aurelia/task-queue@^0.6.0",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.17.0",
+      "aurelia-breeze": "github:jdanyow/aurelia-breeze@^0.9.0",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.10.1",
+      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.8.0",
+      "aurelia-framework": "github:aurelia/framework@^0.16.0",
+      "aurelia-router": "github:aurelia/router@^0.12.0",
+      "aurelia-task-queue": "github:aurelia/task-queue@^0.7.0",
       "breeze": "npm:breeze-client@^1.5.5",
-      "css": "github:systemjs/plugin-css@^0.1.13",
-      "moment": "github:moment/moment@^2.10.3",
+      "css": "github:systemjs/plugin-css@^0.1.18",
+      "moment": "github:moment/moment@^2.10.6",
       "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.1.13",
-      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "babel": "npm:babel-core@^5.6.4",
+      "babel-runtime": "npm:babel-runtime@^5.6.4",
       "core-js": "npm:core-js@^0.9.4"
     }
   }
