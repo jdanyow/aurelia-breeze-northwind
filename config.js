@@ -5,8 +5,7 @@ System.config({
     "stage": 0,
     "optional": []
   },
-
-  "paths": {
+  paths: {
     "*": "dist/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
@@ -21,10 +20,10 @@ System.config({
     "aurelia-framework": "github:aurelia/framework@0.16.0",
     "aurelia-router": "github:aurelia/router@0.12.0",
     "aurelia-task-queue": "github:aurelia/task-queue@0.7.0",
-    "babel": "npm:babel-core@5.6.15",
-    "babel-runtime": "npm:babel-runtime@5.6.15",
+    "babel": "npm:babel-core@5.8.25",
+    "babel-runtime": "npm:babel-runtime@5.8.25",
     "breeze": "npm:breeze-client@1.5.5",
-    "core-js": "npm:core-js@0.9.18",
+    "core-js": "npm:core-js@1.2.0",
     "css": "github:systemjs/plugin-css@0.1.18",
     "moment": "github:moment/moment@2.10.6",
     "numeral": "npm:numeral@1.5.3",
@@ -149,10 +148,15 @@ System.config({
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
-    "npm:babel-runtime@5.6.15": {
+    "npm:babel-runtime@5.8.25": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-js@0.9.18": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:core-js@1.2.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
