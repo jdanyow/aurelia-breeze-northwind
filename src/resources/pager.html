@@ -1,13 +1,19 @@
-<template>
+<template bindable="pageIndex, pageCount, setPage">
   <ul class="pagination" show.bind="pageCount > 1">
-    <li class="${pageIndex === 0 ? 'disabled' : 'waves-effect'}">
-      <a href="#" click.delegate="setPage(0)"><i class="mdi-navigation-chevron-left"></i></a>
+    <li class="${pageIndex === 0 ? 'disabled' : ''}">
+      <a href="#" aria-label="Previous" click.delegate="setPage(0)">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
     </li>
-    <li repeat.for="p of pageCount" class="${p === $parent.pageIndex ? 'active' : 'waves-effect'}">
+    <li repeat.for="p of pageCount" class="${p === $parent.pageIndex ? 'active' : ''}">
       <a href="#" click.delegate="$parent.setPage(p)">${p + 1}</a>
     </li>
-    <li class="${pageIndex === pageCount - 1 ? 'disabled' : 'waves-effect'}">
-      <a href="#" click.delegate="setPage(pageCount - 1)"><i class="mdi-navigation-chevron-right"></i></a>
+    <li class="${pageIndex === pageCount - 1 ? 'disabled' : ''}">
+      <a href="#" aria-label="Next" click.delegate="setPage(pageCount - 1)">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
     </li>
   </ul>
 </template>

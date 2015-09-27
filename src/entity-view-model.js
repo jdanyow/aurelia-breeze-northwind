@@ -26,7 +26,7 @@ export class EntityViewModel {
   canDeactivate() {
     // permit navigating away from new entities.
     if (this.entity.entityAspect.entityState.isAdded()) {
-      Materialize.toast('Add-new cancelled.', 2000);
+      ////////Materialize.toast('Add-new cancelled.', 2000);
       return true;
     }
 
@@ -35,7 +35,7 @@ export class EntityViewModel {
       // throttle the amount of toast we pop.
       if (!this._lastPop || +new Date() - this._lastPop > 2000) {
         this._lastPop = +new Date();
-        Materialize.toast('Navigation cancelled.  Save your changes!', 2000);
+        ////////Materialize.toast('Navigation cancelled.  Save your changes!', 2000);
       }
       return false;
     }
@@ -51,16 +51,11 @@ export class EntityViewModel {
   save() {
     // fake save...
     this.entityManager.acceptChanges();
-    Materialize.toast('Changes saved.', 2000)
+    ////////Materialize.toast('Changes saved.', 2000)
   }
 
   revert() {
     this.entityManager.rejectChanges();
-    Materialize.toast('Changes reverted.', 2000)
-
-    // workaround Materialize datepicker binding timezone issue.
-    if (this.hasChanges) {
-      this.entityManager.rejectChanges();
-    }
+    ////////Materialize.toast('Changes reverted.', 2000)
   }
 }

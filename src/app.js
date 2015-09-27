@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-dependency-injection';
-import {Lookups} from './lookups';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {Lookups} from './lookups';
 
 @inject(Lookups, EventAggregator)
 export class App {
@@ -28,9 +28,6 @@ export class App {
   }
 
   navigationComplete(navigationInstruction) {
-    // Enable the materialize "waves" effect on the new page.
-    Waves.displayEffect()
-
     // Track page-views with google-analytics.
     ga('send', 'pageview', '/' + navigationInstruction.fragment);
   }

@@ -1,4 +1,4 @@
-import materialize from 'Dogfalo/materialize'; // ensure the materialize jquery plugins are installed.
+import {} from 'bootstrap'; // ensure jQuery and bootstrap jQuery plugins are installed.
 
 export function configure(aurelia) {
   aurelia.use
