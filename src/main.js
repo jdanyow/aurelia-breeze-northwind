@@ -1,3 +1,4 @@
+import $ from "jquery"
 import materialize from 'Dogfalo/materialize'; // ensure the materialize jquery plugins are installed.
 
 export function configure(aurelia) {
