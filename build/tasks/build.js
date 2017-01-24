@@ -7,34 +7,39 @@ var sourcemaps = require('gulp-sourcemaps');
 var paths = require('../paths');
 var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
-var notify = require("gulp-notify");
+var notify = require('gulp-notify');
+var browserSync = require('browser-sync');
+var htmlmin = require('gulp-htmlmin');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
 // https://www.npmjs.com/package/gulp-plumber
-gulp.task('build-system', function () {
+gulp.task('build-system', function() {
   return gulp.src(paths.source)
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
-    .pipe(sourcemaps.write({includeContent: true}))
+    .pipe(to5(assign({}, compilerOptions('systemjs'))))
+    .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
     .pipe(gulp.dest(paths.output));
 });
 
 // copies changed html files to the output directory
-gulp.task('build-html', function () {
+gulp.task('build-html', function() {
   return gulp.src(paths.html)
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(changed(paths.output, {extension: '.html'}))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(paths.output));
 });
 
 // copies changed css files to the output directory
-gulp.task('build-css', function () {
+gulp.task('build-css', function() {
   return gulp.src(paths.css)
     .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(gulp.dest(paths.output));
+    .pipe(gulp.dest(paths.output))
+    .pipe(browserSync.stream());
 });
 
 // this task calls the clean task (located
@@ -48,3 +53,4 @@ gulp.task('build', function(callback) {
     callback
   );
 });
+0

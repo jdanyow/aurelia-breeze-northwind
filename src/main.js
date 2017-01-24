@@ -1,11 +1,16 @@
-import materialize from 'Dogfalo/materialize'; // ensure the materialize jquery plugins are installed.
-
 export function configure(aurelia) {
-  aurelia.use
-    .standardConfiguration()
-    .developmentLogging()
-    .feature('resources')        // install application resources such as value-converters and custom html attributes.
-    .plugin('aurelia-breeze');   // install the aurelia-breeze integration plugin.
 
-  aurelia.start().then(a => a.setRoot());
+  let materialize = "Dogfalo/materialize";
+
+  return aurelia.loader.loadModule("jquery").then(aurelia.loader.loadModule(materialize).then(() => {
+
+    aurelia.use
+      .standardConfiguration()
+      .developmentLogging()
+      .feature('resources')        // install application resources such as value-converters and custom html attributes.
+      .plugin('aurelia-breeze')
+      .plugin('aurelia-materialize-bridge', bridge => bridge.useAll());   // install the aurelia-breeze integration plugin.
+
+    return aurelia.start().then(a => a.setRoot());
+  }));
 }

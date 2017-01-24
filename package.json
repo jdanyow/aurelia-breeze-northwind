@@ -19,54 +19,76 @@
     "url": "https://github.com/jdanyow/aurelia-breeze-northwind/"
   },
   "devDependencies": {
-    "aurelia-bundler": "^0.1.6",
-    "aurelia-tools": "^0.1.3",
-    "browser-sync": "^1.8.1",
-    "conventional-changelog": "0.0.11",
-    "del": "^1.1.0",
-    "gulp": "^3.8.10",
-    "gulp-babel": "^5.1.0",
-    "gulp-bump": "^0.3.1",
-    "gulp-changed": "^1.1.0",
-    "gulp-jshint": "^1.9.0",
+    "aurelia-bundler": "^0.5.0",
+    "aurelia-tools": "^1.0.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-plugin-istanbul": "^2.0.3",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "browser-sync": "^2.18.6",
+    "conventional-changelog": "1.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-bump": "^2.5.1",
+    "gulp-changed": "^1.3.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^0.6.6",
-    "gulp-protractor": "^0.0.12",
-    "gulp-sourcemaps": "^1.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-protractor": "^3.0.0",
+    "gulp-sourcemaps": "^2.4.0",
     "gulp-yuidoc": "^0.1.2",
-    "jasmine-core": "^2.1.3",
-    "jshint-stylish": "^1.0.0",
-    "karma": "^0.12.28",
-    "karma-babel-preprocessor": "^5.2.1",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-coverage": "^0.3.1",
-    "karma-jasmine": "^0.3.5",
-    "karma-jspm": "2.0.1-beta.2",
-    "object.assign": "^1.0.3",
-    "require-dir": "^0.1.0",
-    "run-sequence": "^1.0.2",
-    "vinyl-paths": "^1.0.0",
-    "yargs": "^2.1.1"
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jspm": "2.2.0",
+    "object.assign": "^4.0.4",
+    "require-dir": "^0.3.1",
+    "run-sequence": "^1.2.2",
+    "vinyl-paths": "^2.1.0",
+    "yargs": "^6.6.0"
   },
   "jspm": {
     "dependencies": {
-      "Dogfalo/materialize": "github:Dogfalo/materialize@0.97.0",
-      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.17.0",
-      "aurelia-breeze": "github:jdanyow/aurelia-breeze@^0.9.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.10.1",
-      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.8.0",
-      "aurelia-framework": "github:aurelia/framework@^0.16.0",
-      "aurelia-router": "github:aurelia/router@^0.12.0",
-      "aurelia-task-queue": "github:aurelia/task-queue@^0.7.0",
-      "breeze": "npm:breeze-client@^1.5.5",
+      "Dogfalo/materialize": "github:Dogfalo/materialize@master",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^2.0.1",
+      "aurelia-breeze": "github:jdanyow/aurelia-breeze@^2.2.0",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^1.3.0",
+      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^1.0.1",
+      "aurelia-framework": "github:aurelia/framework@^1.0.8",
+      "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.22.0",
+      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.1.0",
+      "aurelia-router": "github:aurelia/router@^1.1.1",
+      "aurelia-task-queue": "github:aurelia/task-queue@^1.1.0",
+      "breeze": "npm:breeze-client@^1.6.1",
       "css": "github:systemjs/plugin-css@^0.1.18",
-      "moment": "github:moment/moment@^2.10.6",
-      "numeral": "npm:numeral@^1.5.3"
+      "jquery": "npm:jquery@3.1.1",
+      "moment": "github:moment/moment@^2.17.1",
+      "numeral": "npm:numeral@^2.0.4"
     },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+    "devDependencies": {},
+    "overrides": {
+      "github:Dogfalo/materialize@master": {
+        "main": "bin/materialize.js",
+        "shim": {
+          "bin/materialize.js": [
+            "jquery"
+          ]
+        },
+        "format": "global",
+        "dependencies": {
+          "jquery": "*"
+        },
+        "registry": "npm"
+      }
     }
   }
 }
