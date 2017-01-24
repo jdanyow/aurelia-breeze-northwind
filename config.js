@@ -14,6 +14,7 @@ System.config({
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@1.3.0",
     "aurelia-event-aggregator": "github:aurelia/event-aggregator@1.0.1",
     "aurelia-framework": "github:aurelia/framework@1.0.8",
+    "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.22.0",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.1.0",
     "aurelia-router": "github:aurelia/router@1.1.1",
     "aurelia-task-queue": "github:aurelia/task-queue@1.1.0",
@@ -25,6 +26,10 @@ System.config({
     "jquery": "npm:jquery@3.1.1",
     "moment": "github:moment/moment@2.17.1",
     "numeral": "npm:numeral@2.0.4",
+    "github:Dogfalo/materialize@0.97.8": {
+      "css": "github:systemjs/plugin-css@0.1.32",
+      "jquery": "npm:jquery@2.2.4"
+    },
     "github:Dogfalo/materialize@master": {
       "jquery": "npm:jquery@3.1.1"
     },
@@ -143,6 +148,18 @@ System.config({
     },
     "npm:aurelia-logging-console@1.0.0": {
       "aurelia-logging": "npm:aurelia-logging@1.2.0"
+    },
+    "npm:aurelia-materialize-bridge@0.22.0": {
+      "aurelia-binding": "npm:aurelia-binding@1.1.1",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.3.0",
+      "aurelia-logging": "npm:aurelia-logging@1.2.0",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.3",
+      "aurelia-pal": "npm:aurelia-pal@1.2.0",
+      "aurelia-router": "npm:aurelia-router@1.1.1",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.1.0",
+      "aurelia-templating": "npm:aurelia-templating@1.2.0",
+      "jquery": "npm:jquery@2.2.4",
+      "materialize": "github:Dogfalo/materialize@0.97.8"
     },
     "npm:aurelia-metadata@1.0.3": {
       "aurelia-pal": "npm:aurelia-pal@1.2.0"

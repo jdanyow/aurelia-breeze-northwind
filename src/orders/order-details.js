@@ -14,6 +14,10 @@ export class OrderDetails {
     this.products.forEach(p => this.productsIndex[p.ProductID] = p);
   }
 
+  attached() {
+    $("#detail").modal();
+  }
+
   activate(order) {
     this.order = order;
   }
@@ -51,7 +55,7 @@ export class OrderDetails {
       .filter(p => this.order.OrderDetails.filter(d => d.ProductID === p.ProductID && d !== this.detail).length === 0);
 
     // open the modal.
-    $('#detail').openModal();
+    $('#detail').modal("open");
   }
 
   closeDetail() {
