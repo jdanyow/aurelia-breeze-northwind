@@ -1,10 +1,6 @@
 System.config({
   defaultJSExtensions: true,
-  transpiler: "babel",
-  babelOptions: {
-    "stage": 0,
-    "optional": []
-  },
+  transpiler: false,
   paths: {
     "*": "dist/*",
     "github:*": "jspm_packages/github/*",
